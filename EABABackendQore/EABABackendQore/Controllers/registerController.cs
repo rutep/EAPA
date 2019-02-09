@@ -52,7 +52,7 @@ namespace EABABackendQore.Controllers
                 users.createUser(userName, password, firstName, middleName, lastName, email, other_email, phone, other_phone, affiliation, postcode, region,
                                  city, country, member_type, repeatPassword, address, other_address);
                 answer = new sending { status = "user Created" };
-                return Created(answer);
+                return Accepted(answer);
             }
         }
     }
