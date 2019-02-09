@@ -21,14 +21,13 @@ namespace EABABackendQore.Controllers
             return new string[] { "value1", "value2" };
         }
         [HttpPost]
-        public async Task<IActionResult> Post(HttpRequestMessage request)
+        public IActionResult Post([FromBody] dynamic data)
         {
-            string body = request.Content.ReadAsStringAsync().Result;
-            var response = JsonConvert.DeserializeObject<register>(body);
-            string userName = response.userName;
-            string password = response.password;
 
-            string userLoggInn = users.userLogin(userName, password);
+            string userName = data.userName;//response.userName;
+            string password = data.password;//response.password;
+
+            string userLoggInn = users.userLogin(userName,password);
 
             var answer = new sending { status = userLoggInn };
 
