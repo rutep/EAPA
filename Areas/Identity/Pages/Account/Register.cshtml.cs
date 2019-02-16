@@ -65,7 +65,7 @@ namespace webApi.Areas.Identity.Pages.Account
             public string other_email { get; set; }
 
             [Required]
-            [EmailAddress]
+            [Phone]
             [DataType(DataType.PhoneNumber)]
             [Display(Name = "phone")]
             public string phone { get; set; }
