@@ -4,9 +4,12 @@
 @{
     ViewData["Title"] = "Log in";
 }
+<head>
+    <link rel="stylesheet" href="~/css/login.css">
+</head>
 
-<h2>@ViewData["Title"]</h2>
-<div class="row">
+<h2 class ="login_header">@ViewData["Title"]</h2>
+<div class="row" id="loginContainer">
     <div class="col-md-4">
         <section>
             <form method="post">

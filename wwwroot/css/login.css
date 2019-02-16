@@ -1,0 +1,9 @@
+﻿#loginContainer
+{
+    display:flex;
+    justify-content:center;
+}
+.login_header{
+    display:flex;
+    justify-content:center;
+}

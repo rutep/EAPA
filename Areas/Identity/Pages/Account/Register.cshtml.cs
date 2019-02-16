@@ -39,10 +39,60 @@ namespace webApi.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+
+            [Required]
+            [Display(Name = "Fyrst Name")]
+            [StringLength(100, ErrorMessage = "fyrst name cannot be less that one letter", MinimumLength = 1)]
+            public string fyrstName { get; set; }
+
+            [Display(Name = "Middle name")]         
+            public string middleName { get; set; }
+
+            [Required]
+            [Display(Name = "Surname")]
+            [StringLength(100, ErrorMessage = "Surname cannot be less that one letter", MinimumLength = 1)]
+            public string surName { get; set; }
+
             [Required]
             [EmailAddress]
+            [DataType(DataType.EmailAddress)]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [EmailAddress]
+            [DataType(DataType.EmailAddress)]
+            [Display(Name = "Other email")]
+            public string other_email { get; set; }
+
+            [Required]
+            [EmailAddress]
+            [DataType(DataType.PhoneNumber)]
+            [Display(Name = "phone")]
+            public string phone { get; set; }
+
+            [Required]   
+            [Display(Name = "Address")]
+            public string address { get; set; }
+
+            [Display(Name = "Address2")]
+            public string address2 { get; set; }
+
+            [Display(Name = "Your Affiliation")]
+            public string affiliation { get; set; }
+
+            [Display(Name = "Postcode")]
+            [DataType(DataType.PostalCode)]
+            public string postcode { get; set; }
+
+            [Display(Name = "Region")]
+            public string region { get; set; }
+
+            [Display(Name = "City")]
+            public string city { get; set; }
+
+            [Required]
+            [Display(Name = "Country")]
+            public string country { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
