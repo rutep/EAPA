@@ -90,7 +90,6 @@ namespace webApi.Areas.Identity.Pages.Account
             [Display(Name = "City")]
             public string city { get; set; }
 
-            [Required]
             [Display(Name = "Country")]
             public string country { get; set; }
 
