@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+
 // Database starter
 namespace webApi.Data
 {
@@ -11,6 +10,11 @@ namespace webApi.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-        }
+
+            // 
+
+    }
+        public DbSet<Event.Data.Event> Events { get; set; }
+    
     }
 }
