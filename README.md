@@ -10,4 +10,4 @@ travel to root, run
 Click localhost:5001, 5000 is broken.
 
 After EVERY pull
-dotnet ef database update
+```dotnet ef database update```
