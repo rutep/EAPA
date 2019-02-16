@@ -35,6 +35,12 @@ namespace webApi.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync()
         {
+            string email = Input.Email;
+
+
+
+
+
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(Input.Email);
