@@ -14,7 +14,7 @@ namespace webApi.Data
             // 
 
         }
-        public DbSet<Event.Data.Event> Events { get; set; }
-    
+        public DbSet<Event.Data.Event> Event { get; set; }
+        
     }
 }

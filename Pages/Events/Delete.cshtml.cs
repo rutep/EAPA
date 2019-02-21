@@ -29,7 +29,7 @@ namespace webApi.Pages.Events
                 return NotFound();
             }
 
-            Event = await _context.Events.FirstOrDefaultAsync(m => m.Id == id);
+            Event = await _context.Event.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Event == null)
             {
@@ -45,11 +45,11 @@ namespace webApi.Pages.Events
                 return NotFound();
             }
 
-            Event = await _context.Events.FindAsync(id);
+            Event = await _context.Event.FindAsync(id);
 
             if (Event != null)
             {
-                _context.Events.Remove(Event);
+                _context.Event.Remove(Event);
                 await _context.SaveChangesAsync();
             }
 

@@ -19,6 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Event[0].text)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].Image)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -30,6 +33,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.text)
+            </td>
+            <td>
+                <img src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" style="height:200px;width:200px;" />
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

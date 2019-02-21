@@ -30,7 +30,7 @@ namespace webApi.Pages.Events
                 return NotFound();
             }
 
-            Event = await _context.Events.FirstOrDefaultAsync(m => m.Id == id);
+            Event = await _context.Event.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Event == null)
             {
@@ -69,7 +69,7 @@ namespace webApi.Pages.Events
 
         private bool EventExists(int id)
         {
-            return _context.Events.Any(e => e.Id == id);
+            return _context.Event.Any(e => e.Id == id);
         }
     }
 }

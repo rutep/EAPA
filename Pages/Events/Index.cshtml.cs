@@ -23,7 +23,7 @@ namespace webApi.Pages.Events
 
         public async Task OnGetAsync()
         {
-            Event = await _context.Events.ToListAsync();
+            Event = await _context.Event.ToListAsync();
         }
     }
 }
