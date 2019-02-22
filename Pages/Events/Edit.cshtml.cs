@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Event.Data;
 using webApi.Data;
 using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace webApi.Pages.Events
 {
@@ -41,11 +43,33 @@ namespace webApi.Pages.Events
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string files)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+
+            if (HttpContext.Request.Form.Files.Count > 0)
+            {
+                IFormFile file = HttpContext.Request.Form.Files[0];
+                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", file.FileName);
+                Event.Image = file.FileName;
+                using (var stream = new FileStream(fileName, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                var original_data = _context.Event.AsNoTracking().Where(P => P.Id == Event.Id).FirstOrDefault();
+                
+                if (original_data.Image != "")
+                {
+                    var fileNam = Path.Combine(he.WebRootPath + "\\images\\events", original_data.Image);
+                    System.IO.File.Delete(fileNam);
+                }
+            }
+            else
+            {
+                Event.Image = "";
             }
 
             _context.Attach(Event).State = EntityState.Modified;

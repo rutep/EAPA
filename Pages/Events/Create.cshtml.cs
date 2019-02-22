@@ -30,20 +30,22 @@ namespace webApi.Pages.Events
         [HttpPost("UploadFiles")]
         public async Task<IActionResult> OnPostAsync()
         {
-
-
-            IFormFile file = HttpContext.Request.Form.Files[0];
-
-            var fileName = Path.Combine(he.WebRootPath + "\\images\\events", file.FileName);
-            Event.Image = file.FileName;
-
-            using (var stream = new FileStream(fileName, FileMode.Create))
+            if (HttpContext.Request.Form.Files.Count > 0)
             {
-                file.CopyTo(stream);
+                IFormFile file = HttpContext.Request.Form.Files[0];
+                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", file.FileName);
+                Event.Image = file.FileName;
+                using (var stream = new FileStream(fileName, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+            } else
+            {
+                Event.Image = "";
             }
+
             
-
-
+            
             if (!ModelState.IsValid)
             {
                 return Page();

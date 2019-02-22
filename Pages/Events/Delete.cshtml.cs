@@ -52,11 +52,14 @@ namespace webApi.Pages.Events
 
             Event = await _context.Event.FindAsync(id);
 
-            if (Event != null)
+            if (Event.Image != "")
             {
                 var fileName = Path.Combine(he.WebRootPath + "\\images\\events", Event.Image);
                 System.IO.File.Delete(fileName);
+            }
 
+            if (Event != null)
+            {
                 _context.Event.Remove(Event);
                 await _context.SaveChangesAsync();
             }
