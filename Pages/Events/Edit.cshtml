@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Event.Id" />
             <div class="form-group">
@@ -25,9 +25,7 @@
                 <span asp-validation-for="Event.text" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Event.Image" class="control-label"></label>
-                <input asp-for="Event.Image" class="form-control" />
-                <span asp-validation-for="Event.Image" class="text-danger"></span>
+                <input type="file" name="files" class="btn btn-default" multiple/>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

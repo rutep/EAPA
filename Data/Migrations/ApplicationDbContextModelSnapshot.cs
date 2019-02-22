@@ -14,7 +14,7 @@ namespace webApi.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085");
 
             modelBuilder.Entity("Event.Data.Event", b =>
                 {

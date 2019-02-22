@@ -8,21 +8,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Event.Data;
 using webApi.Data;
+using Microsoft.AspNetCore.Hosting;
 
 namespace webApi.Pages.Events
 {
     public class EditModel : PageModel
     {
         private readonly webApi.Data.ApplicationDbContext _context;
+        private readonly IHostingEnvironment he;
 
-        public EditModel(webApi.Data.ApplicationDbContext context)
+        public EditModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e)
         {
             _context = context;
+            he = e;
         }
 
         [BindProperty]
         public Event.Data.Event Event { get; set; }
-
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)

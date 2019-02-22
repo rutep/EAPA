@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Event.Data;
 using webApi.Data;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace webApi.Pages.Events
 {
     public class DeleteModel : PageModel
     {
         private readonly webApi.Data.ApplicationDbContext _context;
-
-        public DeleteModel(webApi.Data.ApplicationDbContext context)
+        private readonly IHostingEnvironment he;
+        public DeleteModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e)
         {
             _context = context;
+            he = e;
         }
 
         [BindProperty]
@@ -49,11 +54,17 @@ namespace webApi.Pages.Events
 
             if (Event != null)
             {
+                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", Event.Image);
+                System.IO.File.Delete(fileName);
+
                 _context.Event.Remove(Event);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");
         }
+
+        
+
     }
 }

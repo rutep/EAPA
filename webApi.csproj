@@ -4,6 +4,12 @@
     <UserSecretsId>aspnet-WebPWrecover-1234</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Pages\Events\uploads\**" />
+    <Content Remove="Pages\Events\uploads\**" />
+    <EmbeddedResource Remove="Pages\Events\uploads\**" />
+    <None Remove="Pages\Events\uploads\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
@@ -15,7 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
-    <Folder Include="Pages\Events\uploads\" />
     <Folder Include="wwwroot\images\events\" />
   </ItemGroup>
 </Project>
