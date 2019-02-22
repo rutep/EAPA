@@ -1,5 +1,5 @@
 ﻿@page
-@model IndexModel
+@model webApi.Pages.Events.IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
@@ -54,6 +54,27 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+@foreach (var item in Model.Event)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.text)
+        </td>
+        <td>
+            <img src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" style="height:200px;width:200px;" />
+        </td>
+        <td>
+            <a asp-page="Events/Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-page="Events/Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-page="Events/Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+}
+
 
 <div class="row">
     <div class="col-md-3">
