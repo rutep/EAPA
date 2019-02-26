@@ -7,7 +7,10 @@
     <title>@ViewData["Title"] - webApi</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/homePage.css" />
         <link rel="stylesheet" href="~/css/navBar.css" />
@@ -20,6 +23,29 @@
     </environment>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-full fixed-top" style="background-color: #222; border-color:#080808" >
+        <div class="container">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a class="nav-link" asp-page="/Index">Home</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-page="/About">About</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-page="/Contact">Contact</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-page="/prufa">Rafnar</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-page="/Events/Index">Events</a></li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+
+
+
+
     <div>
         <div id="fb-root"></div>
         <script>
@@ -31,43 +57,32 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
     </div>
-     
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img class="logo" alt="Brand" src="~/images/logo.png">
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-page="/Index">Home</a></li>
-                    <li><a asp-page="/About">About</a></li>
-                    <li><a asp-page="/Contact">Contact</a></li>
-                    <li><a asp-page="/prufa">Rafnar</a></li>
-                    <li><a asp-page="/Events/Index">Events</a></li>
-                </ul>
-                <partial name="_LoginPartial" />
-            </div>
-        </div>
-    </nav>
 
 
+        
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
+
+
+
+
         @RenderBody()
+    
         <hr />
-        <footer>
-            <h2>Fótutr</h2>
-            <p>&copy; 2019 - webApi</p>
+        <div class="footer">
+        <footer class="text-center">
+            <nav class="footercontent">
+                <a href='http://blog.jthink.net' target='_blank' title='Jthink blog'><img src="http://jthink.net/images/blogger.png" alt="Jthink blog" title="Jthink blog" class="btn btn-outline"/></a>
+                <a href="https://www.facebook.com/pages/Jaikoz/15843367311" target="_blank" title="Jthink Facebook page"><img src="http://jthink.net/images/facebook.png" alt="Jthink Facebook page" title="Jthink Facebook page" height="32" width="32"/></a>&nbsp;
+                <a href="https://plus.google.com/b/103554086121439078551/+JthinkNet2/posts" target="_blank" title="Jthink Google+ page"><img src="http://jthink.net/images/google_plus.png" alt="google_plus" title="Jthink Google+ page" height="32" width="32"/></a>&nbsp;
+                <a href="http://youtube.com/jthinkltd" target="_blank" title="Jthink YouTube channel"><img src="http://jthink.net/images/youtube.png" alt="Jthink YouTube channel" title="Jthink YouTube channel" height="32" width="32"/></a>
+                <a href="mailto:paultaylor@jthink.net" target="_blank" title="Email Paul at Jthink"><img src="http://jthink.net/images/email.png" alt="Email Paul at Jthink" title="Email Paul at Jthink" height="32" width="32"/></a>&nbsp;
+                <a href="http://mad.ly/signups/104159/join" target="_blank" title="Subscribe to Weekly Newsletter"><img src="http://jthink.net/images/subscribe_newsletter.png" alt="Subscribe to Weekly Newsletter" title="Subscribe to Weekly Newsletter"/></a>&nbsp;
+            </nav>
+             <span class="text-muted">Copyright JThink Ltd 2004 - 2018 All rights reserved. All trademarks acknowledged</span>
         </footer>
+    </div>
     </div>
 
     <environment include="Development">
