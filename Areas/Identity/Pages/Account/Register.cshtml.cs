@@ -91,7 +91,7 @@ namespace webApi.Areas.Identity.Pages.Account
             public string city { get; set; }
 
             [Display(Name = "Country")]
-            public string country { get; set; }
+            public string Country { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -129,9 +129,9 @@ namespace webApi.Areas.Identity.Pages.Account
                     postcode = Input.postcode,
                     region = Input.region,
                     city = Input.city,
-                    country = Input.country
+                    country = Input.Country
                 };
-                if (Input.country != null)
+                if (Input.Country != "none")
                 {
                     var result = await _userManager.CreateAsync(user, Input.Password);
                     //User has to chose a country
@@ -159,7 +159,7 @@ namespace webApi.Areas.Identity.Pages.Account
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
-
+                    return Page();
                 }
                 ModelState.AddModelError(string.Empty, "Choose a country");
             }
