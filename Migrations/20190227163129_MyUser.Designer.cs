@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using webApi.Data;
 
-namespace webApi.Data.Migrations
+namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190216113957_MyUser")]
+    [Migration("20190227163129_MyUser")]
     partial class MyUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,15 +23,19 @@ namespace webApi.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Image");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100);
+
+                    b.Property<string>("date");
 
                     b.Property<string>("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("Event");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

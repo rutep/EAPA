@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-//Hér þarf að gera töflurnar okkar
-namespace webApi.Data.Migrations
+
+namespace webApi.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,11 +39,37 @@ namespace webApi.Data.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    firstName = table.Column<string>(nullable: true),
+                    middleName = table.Column<string>(nullable: true),
+                    lastName = table.Column<string>(nullable: true),
+                    address = table.Column<string>(nullable: true),
+                    address2 = table.Column<string>(nullable: true),
+                    affiliation = table.Column<string>(nullable: true),
+                    postcode = table.Column<string>(nullable: true),
+                    region = table.Column<string>(nullable: true),
+                    city = table.Column<string>(nullable: true),
+                    country = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Event",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(maxLength: 100, nullable: false),
+                    text = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    date = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Event", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -206,6 +232,9 @@ namespace webApi.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Event");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -36,6 +36,7 @@ namespace webApi
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
