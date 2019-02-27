@@ -20,6 +20,7 @@ public class MyUser : IdentityUser
     public string lastName { get; set; }
     public string address { get; set; }
     public string address2 { get; set; }
+    public string other_email { get; set; }
     public string affiliation { get; set; }
     public string postcode { get; set; }
     public string region { get; set; }
