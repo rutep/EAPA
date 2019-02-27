@@ -116,7 +116,9 @@ namespace webApi.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new MyUser { UserName = Input.Email, Email = Input.Email };
+                var user = new MyUser { UserName = Input.Email, Email = Input.Email, firstName = Input.fyrstName,
+                    middleName = Input.middleName, lastName = Input.surName, address = Input.address, address2 = Input.address2,
+                    affiliation = Input.affiliation, postcode = Input.postcode, region = Input.region, city = Input.city, country = Input.country };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -138,6 +140,11 @@ namespace webApi.Areas.Identity.Pages.Account
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
+                }
+                // User has to choose a country
+                if(Input.country == null)
+                {
+                    ModelState.AddModelError(string.Empty, "You have to choose a country");
                 }
             }
 
