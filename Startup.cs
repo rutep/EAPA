@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using WebPWrecover.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace webApi
 {
@@ -47,7 +49,17 @@ namespace webApi
                 .AddDefaultTokenProviders();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(config =>
+    {
+        // using Microsoft.AspNetCore.Mvc.Authorization;
+        // using Microsoft.AspNetCore.Authorization;
+        var policy = new AuthorizationPolicyBuilder()
+                         .RequireAuthenticatedUser()
+                         .Build();
+        config.Filters.Add(new AuthorizeFilter(policy));
+    })                
+       .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
 
             // requires
             // using Microsoft.AspNetCore.Identity.UI.Services;
