@@ -6,23 +6,19 @@ namespace webApi.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Events",
-                table: "Events");
-
-            migrationBuilder.RenameTable(
-                name: "Events",
-                newName: "Event");
-
+            
+            
+            
             migrationBuilder.AddColumn<string>(
                 name: "Image",
                 table: "Event",
                 nullable: true);
 
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Event",
+            migrationBuilder.AddColumn<string>(
+                name: "date",
                 table: "Event",
-                column: "Id");
+                nullable: true);
+            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -33,6 +29,10 @@ namespace webApi.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "Image",
+                table: "Event");
+
+            migrationBuilder.DropColumn(
+                name: "date",
                 table: "Event");
 
             migrationBuilder.RenameTable(

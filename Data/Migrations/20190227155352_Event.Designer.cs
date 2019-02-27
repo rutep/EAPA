@@ -9,14 +9,14 @@ using webApi.Data;
 namespace webApi.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190222064934_Event")]
+    [Migration("20190227155352_Event")]
     partial class Event
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085");
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
 
             modelBuilder.Entity("Event.Data.Event", b =>
                 {
@@ -28,6 +28,8 @@ namespace webApi.Data.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100);
+
+                    b.Property<string>("date");
 
                     b.Property<string>("text");
 
