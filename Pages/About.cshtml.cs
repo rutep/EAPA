@@ -20,9 +20,9 @@ namespace webApi.Pages
 
         private static readonly HttpClient client = new HttpClient();
 
-        public async Task OnGetAsync()
+        public void OnGet()
         {
-        
+
             //Controller 
             Message = "Your application description page.";
             tester = "teetetetetetet";
