@@ -9,7 +9,7 @@ using webApi.Data;
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190227163129_MyUser")]
+    [Migration("20190227213041_MyUser")]
     partial class MyUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -202,6 +202,8 @@ namespace webApi.Migrations
                     b.Property<string>("lastName");
 
                     b.Property<string>("middleName");
+
+                    b.Property<string>("other_email");
 
                     b.Property<string>("postcode");
 

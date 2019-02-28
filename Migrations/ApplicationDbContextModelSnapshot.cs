@@ -201,6 +201,8 @@ namespace webApi.Migrations
 
                     b.Property<string>("middleName");
 
+                    b.Property<string>("other_email");
+
                     b.Property<string>("postcode");
 
                     b.Property<string>("region");

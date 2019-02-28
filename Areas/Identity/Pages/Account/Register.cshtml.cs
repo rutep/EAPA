@@ -45,7 +45,7 @@ namespace webApi.Areas.Identity.Pages.Account
             [StringLength(100, ErrorMessage = "fyrst name cannot be less that one letter", MinimumLength = 1)]
             public string fyrstName { get; set; }
 
-            [Display(Name = "Middle name")]         
+            [Display(Name = "Middle name")]
             public string middleName { get; set; }
 
             [Required]
@@ -70,7 +70,7 @@ namespace webApi.Areas.Identity.Pages.Account
             [Display(Name = "phone")]
             public string phone { get; set; }
 
-            [Required]   
+            [Required]
             [Display(Name = "Address")]
             public string address { get; set; }
 
@@ -91,7 +91,7 @@ namespace webApi.Areas.Identity.Pages.Account
             public string city { get; set; }
 
             [Display(Name = "Country")]
-            public string country { get; set; }
+            public string Country { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -116,29 +116,54 @@ namespace webApi.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new MyUser { UserName = Input.Email, Email = Input.Email };
-                var result = await _userManager.CreateAsync(user, Input.Password);
-                if (result.Succeeded)
+                var user = new MyUser
                 {
-                    _logger.LogInformation("User created a new account with password.");
-
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { userId = user.Id, code = code },
-                        protocol: Request.Scheme);
-
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
-                }
-                foreach (var error in result.Errors)
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    firstName = Input.fyrstName,
+                    middleName = Input.middleName,
+                    lastName = Input.surName,
+                    address = Input.address,
+                    address2 = Input.address2,
+                    affiliation = Input.affiliation,
+                    postcode = Input.postcode,
+                    region = Input.region,
+                    city = Input.city,
+                    country = Input.Country
+                };
+                if (Input.Country != "none")
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    var result = await _userManager.CreateAsync(user, Input.Password);
+                    //User has to chose a country
+
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("User created a new account with password.");
+
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var callbackUrl = Url.Page(
+                            "/Account/ConfirmEmail",
+                            pageHandler: null,
+                            values: new { userId = user.Id, code = code },
+                            protocol: Request.Scheme);
+                        await _emailSender.SendEmailAsync(Input.Email, "Please confirm your email address",
+                            $"Velcome " + Input.Email +
+                            $"<br/>" +
+                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        
+                        await _userManager.AddToRoleAsync(user,"Admin");
+                        return LocalRedirect(returnUrl);
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return Page();
                 }
+                ModelState.AddModelError(string.Empty, "Choose a country");
             }
 
             // If we got this far, something failed, redisplay form
