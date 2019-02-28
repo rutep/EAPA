@@ -1,4 +1,5 @@
 ﻿using System;
+using BoardMemberEntity.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,9 @@ namespace webApi.Data
 
         }
         public DbSet<Event.Data.Event> Event { get; set; }
-        
+
+        public DbSet<BoardMemberEntity.Data.BoardMember> BoardMember { get; set; }
+
+
     }
 }

@@ -117,7 +117,7 @@ namespace webApi
             };
             //Ensure you have these values in your appsettings.json file
             string userPWD = Configuration["AppSettings:UserPassword"];
-            var _user = await UserManager.FindByEmailAsync(Configuration["AppSettings:AdminUserEmail"]);
+            var _user = await UserManager.FindByEmailAsync(Configuration["AppSettings:UserEmail"]);
 
             if (_user == null)
             {

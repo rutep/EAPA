@@ -9,14 +9,28 @@ using webApi.Data;
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190227163109_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190228203110_MyUser")]
+    partial class MyUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.2-servicing-10034");
+
+            modelBuilder.Entity("BoardMemberEntity.Data.BoardMember", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("BoardRole");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BoardMember");
+                });
 
             modelBuilder.Entity("Event.Data.Event", b =>
                 {
@@ -202,6 +216,8 @@ namespace webApi.Migrations
                     b.Property<string>("lastName");
 
                     b.Property<string>("middleName");
+
+                    b.Property<string>("other_email");
 
                     b.Property<string>("postcode");
 
