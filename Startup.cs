@@ -69,7 +69,7 @@ namespace webApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -127,6 +127,28 @@ namespace webApi
                     //here we tie the new user to the role
                     await UserManager.AddToRoleAsync(poweruser, "Admin");
 
+                }
+            }
+            // Create 5 board members at startup, for testing purposes.
+            for (int i = 1; i <= 5; i++)
+            {
+                var boardUser = new MyUser
+                {
+                    UserName = "BoardMemberNumber" + i.ToString(),
+                    Email = "BoardMember" + i.ToString() + "@board.com",
+                };
+                string boardPWD = Configuration["AppSettings:UserPassword"];
+                var _boardUser = await UserManager.FindByEmailAsync(boardUser.Email);
+
+                if (_boardUser == null)
+                {
+                    var createPowerUser = await UserManager.CreateAsync(boardUser, boardPWD);
+                    if (createPowerUser.Succeeded)
+                    {
+                        //here we tie the new user to the role
+                        await UserManager.AddToRoleAsync(boardUser, "Member");
+
+                    }
                 }
             }
         }

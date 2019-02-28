@@ -154,7 +154,7 @@ namespace webApi.Areas.Identity.Pages.Account
 
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         
-                        await _userManager.AddToRoleAsync(user,"Admin");
+                        await _userManager.AddToRoleAsync(user,"Member");
                         return LocalRedirect(returnUrl);
                     }
                     foreach (var error in result.Errors)
