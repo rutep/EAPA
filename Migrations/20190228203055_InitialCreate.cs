@@ -45,6 +45,7 @@ namespace webApi.Migrations
                     lastName = table.Column<string>(nullable: true),
                     address = table.Column<string>(nullable: true),
                     address2 = table.Column<string>(nullable: true),
+                    other_email = table.Column<string>(nullable: true),
                     affiliation = table.Column<string>(nullable: true),
                     postcode = table.Column<string>(nullable: true),
                     region = table.Column<string>(nullable: true),
@@ -54,6 +55,20 @@ namespace webApi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BoardMember",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(nullable: true),
+                    BoardRole = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BoardMember", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -232,6 +247,9 @@ namespace webApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "BoardMember");
 
             migrationBuilder.DropTable(
                 name: "Event");
