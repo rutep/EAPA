@@ -23,6 +23,8 @@ namespace webApi.Migrations
 
                     b.Property<string>("BoardRole");
 
+                    b.Property<string>("Image");
+
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");

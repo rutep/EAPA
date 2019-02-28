@@ -9,7 +9,7 @@ using webApi.Data;
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190228203227_BoardMember")]
+    [Migration("20190228205535_BoardMember")]
     partial class BoardMember
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,8 @@ namespace webApi.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("BoardRole");
+
+                    b.Property<string>("Image");
 
                     b.Property<string>("UserId");
 
