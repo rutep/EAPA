@@ -5,44 +5,34 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<div class="cont">
+    <div class="container">
+        <div>
+            <h1>Create Event</h1>
+        </div>
+    <p>
+        <a asp-page="Create">Create New Event</a>
+    </p>
+    </div>
+</div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].text)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Image)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Event) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.text)
-            </td>
-            <td>
-                <img src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" style="height:200px;width:200px;" />
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="cart container">
+    @foreach (var item in Model.Event)
+    {
+
+        <div class="card-size">
+            <div class="card" style="width: 18rem;">
+                <img class="images card-image-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Title: @Html.DisplayFor(modelItem => item.Title)</h5>
+                    <p class="card-text">Text: @Html.DisplayFor(modelItem => item.Title)  </p>
+                    <p class="card-text">Starts: Date: Vanntar</p>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

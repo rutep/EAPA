@@ -16,13 +16,9 @@ namespace webApi.Pages.Events
 {
     public class DeleteModel : PageModel
     {
-        private readonly webApi.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment he;
-
-        public DeleteModel()
-        {
-        }
-
+        
         public DeleteModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e)
         {
             _context = context;
