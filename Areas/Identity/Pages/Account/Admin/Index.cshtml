@@ -2,6 +2,9 @@
 @model webApi.Areas.Identity.Pages.Account.Admin.IndexModel
 @{
     ViewData["Title"] = "Index";
+    // ég er svo fokking gáfaður.
+    // Til að nota eigið _Layout þarf að gefa því absolute path í Index.
+    Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
 
 <h2>Index</h2>
