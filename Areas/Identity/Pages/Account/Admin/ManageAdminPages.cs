@@ -8,7 +8,12 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
 {
     public class ManageAdminPages
     {
-        public static string ChangePasswordAdmin => "ChangePasswordAdmin";
+        public static string ChangePassword => "ChangePassword";
+        public static string Index => "Index";
+
+        public static string IndexNavClass(ViewContext viewContext) => PageAdminClass(viewContext, Index);
+
+        public static string ChangePasswordNavClass(ViewContext viewContext) => PageAdminClass(viewContext, ChangePassword);
         public static string PageAdminClass(ViewContext viewContext, string page)
         {
             var activePage = viewContext.ViewData["ActivePage"] as string

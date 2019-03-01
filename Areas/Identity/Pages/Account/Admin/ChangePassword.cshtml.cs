@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using static Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel;
 
 namespace webApi.Areas.Identity.Pages.Account.Admin
 {
