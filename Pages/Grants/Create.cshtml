@@ -1,5 +1,5 @@
 ﻿@page
-@model webApi.Pages.Events.CreateModel
+@model webApi.Pages.Grants.CreateModel
 
 @{
     ViewData["Title"] = "Create";
@@ -8,7 +8,7 @@
 <div class="cont">
     <div class="container">
         <div>
-            <h1>Create Event</h1>
+            <h1>Create Grant</h1>
         </div>
     </div>
 </div>
@@ -19,14 +19,14 @@
             <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Event.Title" class="control-label"></label>
-                    <input asp-for="Event.Title" class="form-control" />
-                    <span asp-validation-for="Event.Title" class="text-danger"></span>
+                    <label asp-for="Grant.Title" class="control-label"></label>
+                    <input asp-for="Grant.Title" class="form-control" />
+                    <span asp-validation-for="Grant.Title" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Event.text" class="control-label"></label>
-                    <input asp-for="Event.text" class="form-control" />
-                    <span asp-validation-for="Event.text" class="text-danger"></span>
+                    <label asp-for="Grant.text" class="control-label"></label>
+                    <input asp-for="Grant.text" class="form-control" />
+                    <span asp-validation-for="Grant.text" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="file" name="files" multiple />
@@ -37,7 +37,7 @@
             </form>
         </div>
     </div>
-    
+
 </div>
 
 

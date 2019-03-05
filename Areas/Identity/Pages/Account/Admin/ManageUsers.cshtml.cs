@@ -24,10 +24,15 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
         public async Task<IActionResult> OnGetAsync()
         {
             // Find the users in that role
+<<<<<<< HEAD
                          
                  user = _userManager.Users.ToList();
                 
                
+=======
+
+                user = _userManager.Users.ToList();           
+>>>>>>> 4a53c2893a79bc58dbb524cddd732b368cbd1557
             return Page();
         }
     }

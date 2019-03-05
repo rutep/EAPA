@@ -1,5 +1,5 @@
 ﻿@page
-@model webApi.Pages.Events.DetailsModel
+@model webApi.Pages.Grants.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -17,12 +17,12 @@
 
 <div class="cart container">
     <div class="card mb-3" style="width: 36rem;">
-        <img class="card-img-top" src="~/images/events/@Model.Event.Image" alt="Card image cap">
+        <img class="card-img-top" src="~/images/grants/@Model.Grant.Image" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">@Model.Event.Title</h5>
+            <h5 class="card-title">@Model.Grant.Title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            <a asp-page="./Edit" asp-route-id="@Model.Event.Id">Edit</a> |
+            <a asp-page="./Edit" asp-route-id="@Model.Grant.Id">Edit</a> |
             <a asp-page="./Index">Back to List</a>
         </div>
     </div>

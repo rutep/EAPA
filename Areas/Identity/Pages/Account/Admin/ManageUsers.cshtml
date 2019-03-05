@@ -6,7 +6,10 @@
     // Til að nota eigið _Layout þarf að gefa því absolute path í Index.
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
+<<<<<<< HEAD
 <p>@Model.user[0].address</p>
+=======
+>>>>>>> 4a53c2893a79bc58dbb524cddd732b368cbd1557
 <h2>Manage users</h2>
 <table>
     <tr>
@@ -22,6 +25,23 @@
         <th>affiliation</th>
         <th>Payment confirmed</th>
     </tr>
-    
+    @{ 
+        foreach(var item in Model.user)
+        {
+            <tr>
+                <td>@item.firstName</td>
+                <td>@item.middleName</td>
+                <td>@item.lastName</td>
+                <td>@item.address</td>
+                <td>@item.city</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Email</td>
+                <td>@item.EmailConfirmed</td>
+                <td>vantar</td>
+                <td>@item.affiliation</td>
+                <td>vantar</td>
+            </tr>
+        }
+    }
 </table>
 
