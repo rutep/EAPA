@@ -30,9 +30,7 @@ namespace webApi.Pages
             // Create the boardmembers
             boardUsers = _userManager.Users.ToList();
             
-            _context.BoardMember.Add(
-                    UserId = boardUsers[0].Id,
-            )
+            
             foreach (var user in boardUsers)
             {
                 
