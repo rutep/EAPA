@@ -3,10 +3,10 @@
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
 <ul class="nav nav-pills nav-stacked">
-    <li class="@ManageAdminPages.IndexNavClass(ViewContext)"><a asp-page="./Index">Profile</a></li>
-    <li class="@ManageAdminPages.ChangePasswordNavClass(ViewContext)"><a id="change-password" asp-page="./ChangePassword">Password</a></li>
-    <li class="@ManageAdminPages.ManageUsersNavClass(ViewContext)"><a id="change-password" asp-page="./ManageUsers">Manage Users</a></li>
-    <li class="@ManageAdminPages.ManageEventsNavClass(ViewContext)"><a id="change-password" asp-page="./Events/Index">Edit events</a></li>
-    <li class="@ManageAdminPages.ManageGrantsNavClass(ViewContext)"><a id="change-password" asp-page="./Grants/Index">Edit Grants</a></li>
+    <li class="@ManageAdminPages.IndexNavClass(ViewContext)"><a href="/Identity/Account/Admin/Index">Profile</a></li>
+    <li class="@ManageAdminPages.ChangePasswordNavClass(ViewContext)"><a id="change-password" href="/Identity/Account/Admin/ChangePassword">Password</a></li>
+    <li class="@ManageAdminPages.ManageUsersNavClass(ViewContext)"><a id="change-password" href="/Identity/Account/Admin/ManageUsers">Manage Users</a></li>
+    <li class="@ManageAdminPages.ManageEventsNavClass(ViewContext)"><a id="change-password" href="/Identity/Account/Admin/Events/Index">Edit events</a></li>
+    <li class="@ManageAdminPages.ManageGrantsNavClass(ViewContext)"><a id="change-password" href="/Identity/Account/Admin/Grants/Index">Edit Grants</a></li>
     
 </ul>
