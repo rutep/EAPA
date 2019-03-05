@@ -31,10 +31,8 @@ namespace webApi.Pages
             boardUsers = _userManager.Users.ToList();
             
             
-            foreach (var user in boardUsers)
-            {
-                
-            }
+            BoardMember.BoardRole="roles";
+            
 
 
             // Find the Boardmembers
