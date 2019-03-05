@@ -14,8 +14,9 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
     {
         private readonly UserManager<MyUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-
         private UserManager<MyUser> manager;
+        //Here I will create the variables that goes in to the model
+        public List<MyUser> user { get; set; }
         public ManageUsersModel(UserManager<MyUser> userManager)
         {
             _userManager = userManager;
@@ -23,16 +24,11 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
         public async Task<IActionResult> OnGetAsync()
         {
             // Find the users in that role
-            try
-            {
-                string b = "4";
+                         
                 var roleUsers = _userManager.Users.ToList();
+                
                 var user = await _userManager.FindByEmailAsync("johndoe@email.com");
-            }
-            catch
-            {
-                int a = 4;
-            }
+           
             return Page();
         }
     }
