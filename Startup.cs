@@ -95,6 +95,7 @@ namespace webApi
             //initializing custom roles 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<MyUser>>();
+            var roleUsers = UserManager.Users.ToList();
             string[] roleNames = { "Admin", "Member" };
             IdentityResult roleResult;
 
