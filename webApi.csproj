@@ -31,6 +31,21 @@
     <Content Update="Areas\Identity\Pages\Account\Admin\Events\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Identity\Pages\Account\Admin\ManageUsers.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
