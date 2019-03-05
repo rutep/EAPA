@@ -22,11 +22,10 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
             _userManager = userManager;
         }
         public async Task<IActionResult> OnGetAsync()
-        {  
-                var roleUsers = _userManager.Users.ToList();
-                
-                var user = await _userManager.FindByEmailAsync("johndoe@email.com");
-           
+        {
+            // Find the users in that role
+
+                user = _userManager.Users.ToList();           
             return Page();
         }
     }

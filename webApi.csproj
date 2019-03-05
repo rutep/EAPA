@@ -4,12 +4,6 @@
     <UserSecretsId>aspnet-WebPWrecover-1234</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Pages\Events\uploads\**" />
-    <Content Remove="Pages\Events\uploads\**" />
-    <EmbeddedResource Remove="Pages\Events\uploads\**" />
-    <None Remove="Pages\Events\uploads\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.4" />
@@ -22,6 +16,21 @@
     <Folder Include="wwwroot\images\grants\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Events\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Events\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Events\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Events\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\Events\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Identity\Pages\Account\Admin\ManageUsers.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
