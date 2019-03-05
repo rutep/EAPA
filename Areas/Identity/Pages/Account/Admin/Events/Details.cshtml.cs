@@ -20,6 +20,7 @@ namespace webApi.Pages.Events
         }
 
         public Event.Data.Event Event { get; set; }
+        
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,6 +30,7 @@ namespace webApi.Pages.Events
             }
 
             Event = await _context.Event.FirstOrDefaultAsync(m => m.Id == id);
+            
 
             if (Event == null)
             {

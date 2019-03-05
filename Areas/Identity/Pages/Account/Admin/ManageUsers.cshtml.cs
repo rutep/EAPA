@@ -24,8 +24,13 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
         public async Task<IActionResult> OnGetAsync()
         {
             // Find the users in that role
-
-                user = _userManager.Users.ToList();           
+            var audkenni = _userManager.GetUserId(User);
+            var userinn = await _userManager.FindByIdAsync(audkenni);
+            if (await _userManager.IsInRoleAsync(userinn, "Member"))
+            {
+                string a = "!";
+            }
+            user = _userManager.Users.ToList();           
             return Page();
         }
     }
