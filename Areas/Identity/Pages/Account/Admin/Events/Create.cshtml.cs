@@ -31,6 +31,7 @@ namespace webApi.Pages.Events
         [HttpPost("UploadFiles")]
         public async Task<IActionResult> OnPostAsync()
         {
+            
             if (HttpContext.Request.Form.Files.Count > 0)
             {
                 Random random = new System.Random();

@@ -28,7 +28,6 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
             var userinn = await _userManager.FindByIdAsync(audkenni);
             if (await _userManager.IsInRoleAsync(userinn, "Member"))
             {
-                
                 string a = "!";
             }
             user = _userManager.Users.ToList();           
