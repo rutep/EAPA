@@ -15,7 +15,7 @@ namespace webApi.Pages
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly webApi.Data.ApplicationDbContext _context;
 
-        public IList<MyUser> boardUsers{get;set;}
+        public List<MyUser> boardUsers{get;set;}
 
         public BoardModel(UserManager<MyUser> userManager, webApi.Data.ApplicationDbContext context)
         {
@@ -23,15 +23,25 @@ namespace webApi.Pages
             _context = context;
         }
 
-        public IList<BoardMemberEntity.Data.BoardMember> BoardMember { get;set; }
-        public async Task<IActionResult> OnGetAsync()
+        public BoardMemberEntity.Data.BoardMember BoardMember { get;set; }
+        public IActionResult OnGet()
         {
+
+            // Create the boardmembers
+            boardUsers = _userManager.Users.ToList();
+            
+            _context.BoardMember.Add(
+                    UserId = boardUsers[0].Id,
+            )
+            foreach (var user in boardUsers)
+            {
+                
+            }
+
+
             // Find the Boardmembers
 
 
-            BoardMember = await _context.BoardMember.ToListAsync();
-        
-            boardUsers = await _userManager.GetUsersInRoleAsync("BoardMember");
 
 
             return Page();
