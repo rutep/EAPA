@@ -96,7 +96,7 @@ namespace webApi
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<MyUser>>();
             var roleUsers = UserManager.Users.ToList();
-            string[] roleNames = { "Admin", "Member" };
+            string[] roleNames = { "Admin", "Member", "Boardmember" };
             IdentityResult roleResult;
 
             foreach (var roleName in roleNames)
@@ -147,7 +147,7 @@ namespace webApi
                     if (createPowerUser.Succeeded)
                     {
                         //here we tie the new user to the role
-                        await UserManager.AddToRoleAsync(boardUser, "Member");
+                        await UserManager.AddToRoleAsync(boardUser, "Boardmember");
 
                     }
                 }
