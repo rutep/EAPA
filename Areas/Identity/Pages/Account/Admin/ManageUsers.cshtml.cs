@@ -25,6 +25,7 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
             // Find the users in that role
             try
             {
+                string b = "4";
                 var roleUsers = _userManager.Users.ToList();
                 var user = await _userManager.FindByEmailAsync("johndoe@email.com");
             }
