@@ -17,6 +17,9 @@ namespace webApi.Data
         }
         public DbSet<Event.Data.Event> Event { get; set; }
 
+        public DbSet<Grant.Data.Grant> Grant { get; set; }
+
+
         public DbSet<BoardMemberEntity.Data.BoardMember> BoardMember { get; set; }
 
 

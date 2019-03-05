@@ -1,0 +1,38 @@
+﻿@page
+@model webApi.Pages.Grants.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="cont">
+    <div class="container">
+        <div>
+            <h1>Create Grant</h1>
+        </div>
+    <p>
+        <a asp-page="Create">Create New Grant</a>
+    </p>
+    </div>
+</div>
+
+
+<div class="cart container">
+    @foreach (var item in Model.Grant)
+    {
+
+        <div class="card-size">
+            <div class="card" style="width: 18rem;">
+                <img class="images card-image-top" src="~/images/grants/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Title: @Html.DisplayFor(modelItem => item.Title)</h5>
+                    <p class="card-text">Text: @Html.DisplayFor(modelItem => item.Title)  Lorem Ipsum.</p>
+                    <p class="card-text">Starts: Date: Vanntar</p>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

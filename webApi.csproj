@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="wwwroot\images\events\" />
+    <Folder Include="wwwroot\images\grants\" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="Areas\Identity\Pages\Account\Admin\ManageUsers.cshtml">
