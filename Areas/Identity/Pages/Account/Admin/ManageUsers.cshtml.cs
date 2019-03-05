@@ -25,8 +25,7 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
         {
             // Find the users in that role
 
-                user = _userManager.Users.ToList();
-           
+                user = _userManager.Users.ToList();           
             return Page();
         }
     }
