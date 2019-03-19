@@ -1,0 +1,45 @@
+﻿@page
+@model webApi.Pages.Boardmembers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>BoardMember</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BoardMember.Id" />
+            <div class="form-group">
+                <label asp-for="BoardMember.UserId" class="control-label"></label>
+                <input asp-for="BoardMember.UserId" class="form-control" />
+                <span asp-validation-for="BoardMember.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoardMember.BoardRole" class="control-label"></label>
+                <input asp-for="BoardMember.BoardRole" class="form-control" />
+                <span asp-validation-for="BoardMember.BoardRole" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoardMember.Image" class="control-label"></label>
+                <input asp-for="BoardMember.Image" class="form-control" />
+                <span asp-validation-for="BoardMember.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

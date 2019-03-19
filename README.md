@@ -19,3 +19,5 @@ Email: admin@admin.com
 Password: !A123z
 
 Ef þörf er á að breyta þessum gögnum, eða bæta við, þá má finna þau appsettings.json
+
+http://europeanaba.org/
