@@ -12,9 +12,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="~/css/footer.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/homePage.css" />
         <link rel="stylesheet" href="~/css/navBar.css" />
+        <link rel="stylesheet" href="~/css/page.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -25,23 +25,23 @@
 </head>
 <body>
 
-
-    <div class="cont top-container" style="background-color: #222;">
+    <div class="cont" style="background-color: #222;">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-sm center">
                     <h1 style="color: #ffffff;">EABEA</h1>
                     <p style="color: #ffffff;">The European Association for Behaviour Analysis (EABA) is an international organisation that aims to promote behaviour analysis in Europe and to provide an international forum within Europe for the study and discussion of matters relevant to behavior analysis.</p>
                 </div>
-                <div class="col">
-                    <a><img class="logo-cont" alt="Brand" src="~/images/logo.png"></a>
+                <div class="col-sm r">
+                    <img class="logo-cont" alt="Brand" src="~/images/logo.png">
                 </div>
             </div>
         </div>
     </div>
 
 
-    <nav class="navbar header navbar-expand-lg navbar-dark navbar-full" id="myHeader" style="background-color: #222; border-color:#080808">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-full" id="myHeader" style="background-color: #222; border-color:#080808">
         <div class="container">
             <a class="navbar-brand" href="#">EABA</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,14 +53,14 @@
                     <li class="nav-item active"><a class="nav-link" asp-page="/Index">Home</a></li>
                     <li class="nav-item active"><a class="nav-link" asp-page="/About">About</a></li>
                     <li class="nav-item active"><a class="nav-link" asp-page="/Contact">Contact</a></li>
-                    <li class="nav-item active"><a class="nav-link" asp-page="/BoardMembers">Board of Directors</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-page="/BoardMembers/Index">Board of Directors</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-page="/BoardMembers/index">Board of Directors</a></li>
                     <li class="nav-item active"><a class="nav-link" asp-page="/Event">Events</a></li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
         </div>
     </nav>
-
 
 
     <div>
@@ -75,13 +75,11 @@
             }(document, 'script', 'facebook-jssdk'));</script>
     </div>
 
-    <partial name="_CookieConsentPartial" />
+    <!--<partial name="_CookieConsentPartial" />-->
+    
+    @RenderBody()
 
-    <div class="container body-content content">
-
-        @RenderBody()
-
-    </div>
+    
     <partial name="_footer" />
 
 

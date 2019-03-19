@@ -1,18 +1,20 @@
 ﻿@page
-@model webApi.Pages.Boardmembers.IndexModel
-
+@model webApi.Pages.Boardmember.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Board of Director Members</h2>
+<h2>Index</h2>
 
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserList[0].UserName)
+                @Html.DisplayNameFor(model => model.BoardMember[0].UserId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BoardMember[0].BoardRole)
@@ -24,15 +26,10 @@
         </tr>
     </thead>
     <tbody>
- @{
-        var i = 0;
-}
 @foreach (var item in Model.BoardMember) {
-   
         <tr>
             <td>
-                <!--@Html.DisplayFor(modelItem => item.UserId)-->
-              @Html.DisplayFor(modelItem => Model.UserList[i].UserName)
+                @Html.DisplayFor(modelItem => item.UserId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BoardRole)
@@ -40,14 +37,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Image)
             </td>
-           <!-- <td>
+            <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td> -->
+            </td>
         </tr>
-        i++;
 }
-
     </tbody>
 </table>
