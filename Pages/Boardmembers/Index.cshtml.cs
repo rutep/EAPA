@@ -20,10 +20,19 @@ namespace webApi.Pages.Boardmembers
         }
 
         public IList<BoardMember> BoardMember { get;set; }
+        public IQueryable<MyUser> MyUser {get;set;}
+        public IList<MyUser> UserList{get;set;}
 
         public async Task OnGetAsync()
         {
             BoardMember = await _context.BoardMember.ToListAsync();
+            
+            MyUser = from c in _context.BoardMember
+                    join u in _context.Users
+                    on c.UserId equals u.Id
+                    select u;
+            UserList = MyUser.ToList();
+            
         }
     }
 }
