@@ -11,18 +11,11 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
     public class IndexModel : PageModel
     {
         private readonly UserManager<MyUser> _userManager;
-        public async Task OnGetAsync()
+        
+        public void OnGet()
         {
-            var audkenni = _userManager.GetUserId(User);
-            var userinn = await _userManager.FindByIdAsync(audkenni);
-            if (await _userManager.IsInRoleAsync(userinn, "Admin"))
-            {
-                String a = "";
-            }
-            else
-            {
-                String b = "";
-            }
+
         }
     }
+    
 }
