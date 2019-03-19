@@ -29,7 +29,9 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Title: @Html.DisplayFor(modelItem => item.Title)</h5>
                     <p class="card-text">Text: @Html.DisplayFor(modelItem => item.Title)  Lorem Ipsum.</p>
-                    <p class="card-text">Starts: Date: Vanntar</p>
+                    <p class="card-text">Register link: <a href="@Html.DisplayFor(modelItem => item.eventLink)"> @Html.DisplayFor(modelItem => item.eventLink)</a></p>
+                    <p class="card-text">Starting date: @Html.DisplayFor(modelItem => item.StartDate)</p>
+                    <p class="card-text">Ending date: @Html.DisplayFor(modelItem => item.date)</p>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
