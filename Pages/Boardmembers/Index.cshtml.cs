@@ -27,12 +27,6 @@ namespace webApi.Pages.Boardmembers
         {
             BoardMember = await _context.BoardMember.ToListAsync();
             
-            MyUser = from c in _context.BoardMember
-                    join u in _context.Users
-                    on c.UserId equals u.Id
-                    select u;
-            UserList = MyUser.ToList();
-            
         }
     }
 }
