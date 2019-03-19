@@ -17,5 +17,7 @@ namespace Event.Data
         public string Image { get; set; }
 
         public string date { get; set; }
+        public string eventLink { get; set; }
+        public string StartDate { get; set; }
     }
 }
