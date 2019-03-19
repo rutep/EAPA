@@ -28,5 +28,6 @@ public class MyUser : IdentityUser
     public string country { get; set; }
     public string pdfFile{get;set;}
     
+
     //custom properties
 }
