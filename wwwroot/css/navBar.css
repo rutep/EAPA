@@ -19,11 +19,7 @@
 }
 
 .cont {
-    padding: 20px;
-    padding-bottom: 5%;
-    width: 100%;  
-    display: flex;
-    text-align: center;
+    width: 100%;
 }
 
 .cart {
@@ -39,3 +35,28 @@
     border: solid 0.4px #5F9EA0;
 }
 
+.sticky + .content {
+    padding-top: 102px;
+}
+
+.top-container {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+}
+
+.header {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+}
+
+.content {
+    padding: 16px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
