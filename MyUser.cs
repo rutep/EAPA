@@ -1,17 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using webApi.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 public class MyUser : IdentityUser
 {
@@ -27,8 +15,8 @@ public class MyUser : IdentityUser
     public string city { get; set; }
     public string country { get; set; }
     public string pdfFile{get;set;}
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
+    // public DateTime StartDate { get; set; }
+    // public DateTime EndDate { get; set; }
 
     //custom properties
 }
