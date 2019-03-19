@@ -146,7 +146,7 @@ namespace webApi.Areas.Identity.Pages.Account
                     Random random = new System.Random();
                     int id = random.Next(0, 100000);
                     IFormFile file = HttpContext.Request.Form.Files[0];
-                    var fileName = Path.Combine(he.WebRootPath + "\\images\\usersPdf", id + file.FileName);
+                    var fileName = Path.Combine(he.WebRootPath + "/images/usersPdf", id + file.FileName);
                     user.pdfFile = id + file.FileName;
 
                     using (var stream = new FileStream(fileName, FileMode.Create))
