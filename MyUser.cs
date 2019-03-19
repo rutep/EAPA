@@ -27,7 +27,8 @@ public class MyUser : IdentityUser
     public string city { get; set; }
     public string country { get; set; }
     public string pdfFile{get;set;}
-    
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
 
     //custom properties
 }
