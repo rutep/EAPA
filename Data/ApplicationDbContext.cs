@@ -21,7 +21,6 @@ namespace webApi.Data
 
 
         public DbSet<BoardMemberEntity.Data.BoardMember> BoardMember { get; set; }
-
-
+        
     }
 }

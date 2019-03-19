@@ -7,14 +7,12 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: solid pink; 
 }
 
 .r {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border: solid brown;
 }
 
 /* Wrapping element */
