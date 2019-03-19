@@ -50,7 +50,8 @@ namespace webApi.Migrations
                     postcode = table.Column<string>(nullable: true),
                     region = table.Column<string>(nullable: true),
                     city = table.Column<string>(nullable: true),
-                    country = table.Column<string>(nullable: true)
+                    country = table.Column<string>(nullable: true),
+                    pdfFile = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
