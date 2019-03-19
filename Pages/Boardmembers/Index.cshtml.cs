@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using BoardMemberEntity.Data;
 using webApi.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace webApi.Pages.Boardmembers
 {
+    [AllowAnonymous]
     public class IndexModel : PageModel
     {
         private readonly webApi.Data.ApplicationDbContext _context;
