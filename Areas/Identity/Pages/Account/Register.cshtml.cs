@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
 
+
 namespace webApi.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
@@ -28,12 +29,14 @@ namespace webApi.Areas.Identity.Pages.Account
             UserManager<MyUser> userManager,
             SignInManager<MyUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IHostingEnvironment e)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+             he = e;
         }
 
         [BindProperty]
@@ -96,8 +99,8 @@ namespace webApi.Areas.Identity.Pages.Account
 
             [Display(Name = "Country")]
             public string Country { get; set; }
-            [Display(Name="Pdf file")]
-            public string pdfFile{get;set;}
+            [Display(Name = "Pdf file")]
+            public string pdfFile { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -116,6 +119,7 @@ namespace webApi.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+        [HttpPost("UploadPdf")]
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
 
@@ -138,21 +142,26 @@ namespace webApi.Areas.Identity.Pages.Account
                     country = Input.Country,
                 };
                 if (HttpContext.Request.Form.Files.Count > 0)
-            {
-                Random random = new System.Random();
-                int id = random.Next(0, 100000);
-                IFormFile file = HttpContext.Request.Form.Files[0];
-                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", id  + file.FileName);
-                user.pdfFile = id + file.FileName;
-
-                using (var stream = new FileStream(fileName, FileMode.Create))
                 {
-                    file.CopyTo(stream);
+                    Random random = new System.Random();
+                    int id = random.Next(0, 100000);
+                    IFormFile file = HttpContext.Request.Form.Files[0];
+                    if(file.ContentType != "application/pdf"){
+                        ModelState.AddModelError(string.Empty, "File Extension Is Invalid - Only Upload PDF File");
+                        return Page();
+                    }
+                    var fileName = Path.Combine(he.WebRootPath + "/images/usersPdf", id + file.FileName);
+                    user.pdfFile = id + file.FileName;
+
+                    using (var stream = new FileStream(fileName, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
                 }
-            } else
-            {
-                user.pdfFile = "";
-            }
+                else
+                {
+                    user.pdfFile = "";
+                }
                 if (Input.Country != "none")
                 {
                     var result = await _userManager.CreateAsync(user, Input.Password);
@@ -175,8 +184,8 @@ namespace webApi.Areas.Identity.Pages.Account
 
 
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                        
-                        await _userManager.AddToRoleAsync(user,"Member");
+
+                        await _userManager.AddToRoleAsync(user, "Member");
                         return LocalRedirect(returnUrl);
                     }
                     foreach (var error in result.Errors)
