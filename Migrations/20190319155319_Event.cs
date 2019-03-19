@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace webApi.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Event : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -101,6 +101,24 @@ namespace webApi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Grant", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vote",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    voteId = table.Column<int>(maxLength: 100, nullable: false),
+                    Title = table.Column<string>(nullable: false),
+                    text = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    date = table.Column<string>(nullable: true),
+                    pdfLink = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vote", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -272,6 +290,9 @@ namespace webApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Grant");
+
+            migrationBuilder.DropTable(
+                name: "Vote");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

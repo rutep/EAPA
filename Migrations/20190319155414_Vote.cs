@@ -2,7 +2,7 @@
 
 namespace webApi.Migrations
 {
-    public partial class Event : Migration
+    public partial class Vote : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

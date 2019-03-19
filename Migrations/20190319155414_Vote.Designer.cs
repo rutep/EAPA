@@ -9,8 +9,8 @@ using webApi.Data;
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190319152131_BoardMember")]
-    partial class BoardMember
+    [Migration("20190319155414_Vote")]
+    partial class Vote
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -253,6 +253,30 @@ namespace webApi.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Vote.Data.Vote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.Property<string>("date");
+
+                    b.Property<string>("pdfLink");
+
+                    b.Property<string>("text");
+
+                    b.Property<int>("voteId")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vote");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -4,13 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace webApi.Data
+namespace Vote.Data
 {
     public class Vote
     {
         public int Id { get; set; }
 
         [Required, StringLength(100)]
+        public int voteId { get; set; }
+        [Required]
         public string Title { get; set; }
 
         public string text { get; set; }
@@ -18,5 +20,6 @@ namespace webApi.Data
         public string Image { get; set; }
 
         public string date { get; set; }
+        public String pdfLink { get; set; }
     }
 }
