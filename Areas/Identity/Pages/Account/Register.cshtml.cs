@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Hosting;
 
 namespace webApi.Areas.Identity.Pages.Account
 {
@@ -19,6 +22,7 @@ namespace webApi.Areas.Identity.Pages.Account
         private readonly UserManager<MyUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IHostingEnvironment he;
 
         public RegisterModel(
             UserManager<MyUser> userManager,
@@ -92,6 +96,8 @@ namespace webApi.Areas.Identity.Pages.Account
 
             [Display(Name = "Country")]
             public string Country { get; set; }
+            [Display(Name="Pdf file")]
+            public string pdfFile{get;set;}
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -129,8 +135,24 @@ namespace webApi.Areas.Identity.Pages.Account
                     postcode = Input.postcode,
                     region = Input.region,
                     city = Input.city,
-                    country = Input.Country
+                    country = Input.Country,
                 };
+                if (HttpContext.Request.Form.Files.Count > 0)
+            {
+                Random random = new System.Random();
+                int id = random.Next(0, 100000);
+                IFormFile file = HttpContext.Request.Form.Files[0];
+                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", id  + file.FileName);
+                user.pdfFile = id + file.FileName;
+
+                using (var stream = new FileStream(fileName, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+            } else
+            {
+                user.pdfFile = "";
+            }
                 if (Input.Country != "none")
                 {
                     var result = await _userManager.CreateAsync(user, Input.Password);
