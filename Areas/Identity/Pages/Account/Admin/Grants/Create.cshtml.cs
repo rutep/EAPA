@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace webApi.Pages.Grants
 {
@@ -12,18 +13,31 @@ namespace webApi.Pages.Grants
     {
         private readonly webApi.Data.ApplicationDbContext _context;
         private readonly IHostingEnvironment he;
+        private readonly UserManager<MyUser> _userManager;
 
-        public CreateModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e)
+        public CreateModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e, UserManager<MyUser> userManager)
         {
             _context = context;
             he = e;
+            _userManager = userManager;
         }
 
 
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-            return Page();
+            var audkenni = _userManager.GetUserId(User);
+            var userinn = await _userManager.FindByIdAsync(audkenni);
+            if (await _userManager.IsInRoleAsync(userinn, "Member"))
+            {
+                return Redirect("/");
+            }
+            //Else is for admin
+            else
+            {
+                return Page();
+
+            }
         }
 
         [BindProperty]

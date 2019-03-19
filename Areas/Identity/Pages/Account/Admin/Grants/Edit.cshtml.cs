@@ -11,36 +11,50 @@ using webApi.Data;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace webApi.Pages.Grants
 {
     public class EditModel : PageModel
     {
         private readonly webApi.Data.ApplicationDbContext _context;
+        private readonly UserManager<MyUser> _userManager;
         private readonly IHostingEnvironment he;
 
-        public EditModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e)
+        public EditModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e, UserManager<MyUser> userManager)
         {
             _context = context;
             he = e;
+            _userManager = userManager;
         }
 
         [BindProperty]
         public Grant.Data.Grant Grant { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
+            var audkenni = _userManager.GetUserId(User);
+            var userinn = await _userManager.FindByIdAsync(audkenni);
+            if (await _userManager.IsInRoleAsync(userinn, "Member"))
             {
-                return NotFound();
+                return Redirect("/");
             }
-
-            Grant = await _context.Grant.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Grant == null)
+            //Else is for admin
+            else
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                Grant = await _context.Grant.FirstOrDefaultAsync(m => m.Id == id);
+
+                if (Grant == null)
+                {
+                    return NotFound();
+                }
+                return Page();
+
             }
-            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string files)
