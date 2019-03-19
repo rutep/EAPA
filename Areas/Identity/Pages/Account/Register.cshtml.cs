@@ -146,6 +146,10 @@ namespace webApi.Areas.Identity.Pages.Account
                     Random random = new System.Random();
                     int id = random.Next(0, 100000);
                     IFormFile file = HttpContext.Request.Form.Files[0];
+                    if(file.ContentType != "application/pdf"){
+                        ModelState.AddModelError(string.Empty, "File Extension Is Invalid - Only Upload PDF File");
+                        return Page();
+                    }
                     var fileName = Path.Combine(he.WebRootPath + "/images/usersPdf", id + file.FileName);
                     user.pdfFile = id + file.FileName;
 
