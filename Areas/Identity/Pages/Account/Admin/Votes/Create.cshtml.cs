@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Vote.Data;
-using webApi.Data;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace webApi.Pages.Votes
 {
@@ -17,40 +13,57 @@ namespace webApi.Pages.Votes
     {
         private readonly webApi.Data.ApplicationDbContext _context;
         private readonly IHostingEnvironment he;
+        private readonly UserManager<MyUser> _userManager;
 
-        public CreateModel(webApi.Data.ApplicationDbContext context)
+
+        public CreateModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e, UserManager<MyUser> userManager)
         {
             _context = context;
+            he = e;
+            _userManager = userManager;
         }
 
-        public IActionResult OnGet()
+
+
+        public async Task<IActionResult> OnGetAsync()
         {
-            return Page();
+            var audkenni = _userManager.GetUserId(User);
+            var userinn = await _userManager.FindByIdAsync(audkenni);
+            if (await _userManager.IsInRoleAsync(userinn, "Member"))
+            {
+                return Redirect("/");
+            }
+            //Else is for admin
+            else
+            {
+                return Page();
+            }
         }
 
         [BindProperty]
         public Vote.Data.Vote Vote { get; set; }
-
         public async Task<IActionResult> OnPostAsync()
         {
+            
             if (HttpContext.Request.Form.Files.Count > 0)
             {
                 Random random = new System.Random();
                 int id = random.Next(0, 100000);
                 IFormFile file = HttpContext.Request.Form.Files[0];
-                var fileName = Path.Combine(he.WebRootPath + "\\images\\votes", id + file.FileName);
+                var fileName = Path.Combine(he.WebRootPath + "\\images\\votes", id  + file.FileName);
                 Vote.Image = id + file.FileName;
 
                 using (var stream = new FileStream(fileName, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
-            }
-            else
+            } else
             {
                 Vote.Image = "";
             }
 
+            
+            
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -61,5 +74,7 @@ namespace webApi.Pages.Votes
 
             return RedirectToPage("./Index");
         }
+
+
     }
 }

@@ -10,8 +10,8 @@ namespace Vote.Data
     {
         public int Id { get; set; }
 
-        [Required, StringLength(100)]
-        public int voteId { get; set; }
+        [Required]
+        public String voteId { get; set; }
         [Required]
         public string Title { get; set; }
 

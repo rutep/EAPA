@@ -4,47 +4,43 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
+
 }
 
-<h2>Edit</h2>
 
-<h4>Vote</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Vote.Id" />
-            <div class="form-group">
-                <label asp-for="Vote.Title" class="control-label"></label>
-                <input asp-for="Vote.Title" class="form-control" />
-                <span asp-validation-for="Vote.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Vote.text" class="control-label"></label>
-                <input asp-for="Vote.text" class="form-control" />
-                <span asp-validation-for="Vote.text" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Vote.Image" class="control-label"></label>
-                <input asp-for="Vote.Image" class="form-control" />
-                <span asp-validation-for="Vote.Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Vote.date" class="control-label"></label>
-                <input asp-for="Vote.date" class="form-control" />
-                <span asp-validation-for="Vote.date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+<div class="cont">
+    <div class="container">
+        <div>
+            <h1>Edit Event</h1>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
+
+
+<div class="cart container">
+    <div class="card mb-3" style="width: 36rem;">
+        <img class="card-img-top" src="~/images/events/@Model.Vote.Image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Vote.Title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Vote.Id" />
+                <div class="form-group">
+                    <label asp-for="Vote.Title" class="control-label"></label>
+                    <input asp-for="Vote.Title" class="form-control" />
+                    <span asp-validation-for="Vote.Title" class="text-danger"></span>
+                </div>
+                
+                <a asp-page="./Index">Back to List</a>
+            </form>
+        </div>
+    </div>
 </div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

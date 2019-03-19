@@ -6,44 +6,85 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Vote.Data;
+using Event.Data;
 using webApi.Data;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace webApi.Pages.Votes
 {
     public class EditModel : PageModel
     {
         private readonly webApi.Data.ApplicationDbContext _context;
-
-        public EditModel(webApi.Data.ApplicationDbContext context)
+        private readonly IHostingEnvironment he;
+        private readonly UserManager<MyUser> _userManager;
+        public EditModel(webApi.Data.ApplicationDbContext context, IHostingEnvironment e, UserManager<MyUser> userManager)
         {
             _context = context;
+            he = e;
+            _userManager = userManager;
         }
 
         [BindProperty]
         public Vote.Data.Vote Vote { get; set; }
-
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
+            var audkenni = _userManager.GetUserId(User);
+            var userinn = await _userManager.FindByIdAsync(audkenni);
+            if (await _userManager.IsInRoleAsync(userinn, "Member"))
             {
-                return NotFound();
+                return Redirect("/");
             }
-
-            Vote = await _context.Vote.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Vote == null)
+            //Else is for admin
+            else
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                Vote = await _context.Vote.FirstOrDefaultAsync(m => m.Id == id);
+
+                if (Vote == null)
+                {
+                    return NotFound();
+                }
+                return Page();
+
             }
-            return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string files)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+
+            if (HttpContext.Request.Form.Files.Count > 0)
+            {
+                Random random = new System.Random();
+                int id = random.Next(0, 100000);
+                IFormFile file = HttpContext.Request.Form.Files[0];
+                var fileName = Path.Combine(he.WebRootPath + "\\images\\votes", id + file.FileName);
+                Vote.Image = id + file.FileName;
+                using (var stream = new FileStream(fileName, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                var original_data = _context.Event.AsNoTracking().Where(P => P.Id == Vote.Id).FirstOrDefault();
+                
+                if (original_data.Image != "")
+                {
+                    var fileNam = Path.Combine(he.WebRootPath + "\\images\\votes", original_data.Image);
+                    System.IO.File.Delete(fileNam);
+                }
+            }
+            else
+            {
+                Vote.Image = "";
             }
 
             _context.Attach(Vote).State = EntityState.Modified;
@@ -54,7 +95,7 @@ namespace webApi.Pages.Votes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VoteExists(Vote.Id))
+                if (!EventExists(Vote.Id))
                 {
                     return NotFound();
                 }
@@ -67,7 +108,7 @@ namespace webApi.Pages.Votes
             return RedirectToPage("./Index");
         }
 
-        private bool VoteExists(int id)
+        private bool EventExists(int id)
         {
             return _context.Vote.Any(e => e.Id == id);
         }

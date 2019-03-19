@@ -2,17 +2,15 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using webApi.Data;
 
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190319155414_Vote")]
-    partial class Vote
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,11 +39,15 @@ namespace webApi.Migrations
 
                     b.Property<string>("Image");
 
+                    b.Property<string>("StartDate");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<string>("date");
+
+                    b.Property<string>("eventLink");
 
                     b.Property<string>("text");
 
@@ -239,6 +241,8 @@ namespace webApi.Migrations
 
                     b.Property<string>("other_email");
 
+                    b.Property<string>("pdfFile");
+
                     b.Property<string>("postcode");
 
                     b.Property<string>("region");
@@ -271,8 +275,8 @@ namespace webApi.Migrations
 
                     b.Property<string>("text");
 
-                    b.Property<int>("voteId")
-                        .HasMaxLength(100);
+                    b.Property<string>("voteId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

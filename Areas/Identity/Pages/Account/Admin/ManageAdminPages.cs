@@ -14,12 +14,17 @@ namespace webApi.Areas.Identity.Pages.Account.Admin
         public static string Events => "Events";
         public static string Grants => "Grants";
 
+        public static string Votes => "Votes";
+
+
+
         public static string IndexNavClass(ViewContext viewContext) => PageAdminClass(viewContext, Index);
 
         public static string ChangePasswordNavClass(ViewContext viewContext) => PageAdminClass(viewContext, ChangePassword);
         public static string ManageUsersNavClass(ViewContext viewContext) => PageAdminClass(viewContext, ManageUsers);
         public static string ManageEventsNavClass(ViewContext viewContext) => PageAdminClass(viewContext, Events);
         public static string ManageGrantsNavClass(ViewContext viewContext) => PageAdminClass(viewContext, Grants);
+        public static string ManageVotesNavClass(ViewContext viewContext) => PageAdminClass(viewContext, Votes);
         public static string PageAdminClass(ViewContext viewContext, string page)
         {
             var activePage = viewContext.ViewData["ActivePage"] as string
