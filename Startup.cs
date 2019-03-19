@@ -37,6 +37,10 @@ namespace webApi
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            // We don't need non-numeric numbers
+            services.Configure<IdentityOptions>(options => {
+                options.Password.RequireNonAlphanumeric = false;
+            });
 
 
             services.AddDbContext<ApplicationDbContext>(options =>
