@@ -6,28 +6,47 @@
 
 <partial name="_Carousel" />
 
-<div class="container body-content">
+<!--
+<div id="headingContainer">
+    
+    <div class="row">
+        <h1>
+            become an eaba member?
+        </h1>
+    </div>
+    <div class="row">
+        <p>
+            Reduced EABA conference registration rates
+            Subscription to the European Journal of Behaviour Analysis
+            Access to our list-server and Newsletters
+            Nomination and voting rights
+        </p>
+    </div>
+</div>
+-->
 
-    @if (Model.Grant.Count > 0)
-    {
-        <div id="loginContainer">
-            <div class="heading">
-                <div>
-                    <h1>News</h1>
+    <div class="container body-content">
+
+        @if (Model.Grant.Count > 0)
+        {
+            <div id="loginContainer">
+                <div class="heading">
+                    <div>
+                        <h1>News</h1>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="cart container">
-            @foreach (var item in Model.Grant)
-            {
-                if (item.Image == "")
+            <div class="cart container">
+                @foreach (var item in Model.Grant)
                 {
-                    <a asp-page="/News">
-                        <div class="card-size">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.Title)</h5>
-                                    <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
+                    if (item.Image == "")
+                    {
+                        <a asp-page="/News">
+                            <div class="card-size">
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.Title)</h5>
+                                        <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
                                 </div>
                             </div>
                         </div>
