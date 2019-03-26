@@ -36,10 +36,11 @@ namespace webApi.Pages.Boardmember
         {
             if (HttpContext.Request.Form.Files.Count > 0)
             {
+                // Það vantar skjal frá Visual Studio, Pétur ætlaði að búa það til. Annars biðja Helga
                 Random random = new System.Random();
                 int id = random.Next(0, 100000);
                 IFormFile file = HttpContext.Request.Form.Files[0];
-                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", id  + file.FileName);
+                var fileName = Path.Combine(he.WebRootPath + "/images/boardMembers", id  + file.FileName);
                 BoardMember.Image = id + file.FileName;
 
                 using (var stream = new FileStream(fileName, FileMode.Create))

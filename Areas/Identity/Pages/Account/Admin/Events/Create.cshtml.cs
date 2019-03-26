@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace webApi.Pages.Events
 {
+    
     public class CreateModel : PageModel
     {
         private readonly webApi.Data.ApplicationDbContext _context;
