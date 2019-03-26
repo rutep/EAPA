@@ -90,23 +90,8 @@
             }(document, 'script', 'facebook-jssdk'));</script>
     </div>
     <!--<partial name="_CookieConsentPartial" />-->
-    <div class="container" id="containerLayout">
-
-        <h2>Manage your Admin account</h2>
-        <div>
-            <h4>Change your Admin settings</h4>
-            <hr />
-            <div class="row">
-                <div class="col-md-3">
-                    <partial name="_AdminNav" />
-                </div>
-                <div class="col-md-9">
-                    @RenderBody()
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @RenderBody()
+    
 
     <partial name="_footer" />
 
@@ -141,7 +126,6 @@
     var sticky = header.offsetTop;
 
     function myFunction() {
-        console.log("testig");
         if (window.pageYOffset > sticky) {
             header.classList.add("sticky");
             header.classList.add("navbar navbar - expand - lg navbar - dark navbar - full");
