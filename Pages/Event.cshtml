@@ -21,22 +21,24 @@
         {
             if (item.Image == "")
             {
-                <div class="card mb-3" style="width: 36rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
+            <div class="card mb-3" style="width: 36rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
+                    <p class="card-text">Starts: @Html.DisplayFor(modelItem => item.StartDate)</p>
+                    <p class="card-text">Ends: @Html.DisplayFor(modelItem => item.date)</p>
                 </div>
+            </div>
             }
             else
             {
                 <div class="card mb-3" style="width: 36rem;">
-                    <img class="card-img-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                    <img class="images card-image-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
+                        <p class="card-text">Starts: @Html.DisplayFor(modelItem => item.StartDate)</p>
+                        <p class="card-text">Ends: @Html.DisplayFor(modelItem => item.date)</p>
                     </div>
                 </div>
             }
@@ -45,8 +47,8 @@
 }
 else
 {
-    <div class="cont">
-        <div class="container">
+    <div id="headingContainer">
+        <div class="headin">
             <div>
                 <h1>No upcoming events</h1>
             </div>
