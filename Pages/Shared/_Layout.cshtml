@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="~/css/homePage.css" />
         <link rel="stylesheet" href="~/css/navBar.css" />
         <link rel="stylesheet" href="~/css/page.css" />
+        <link rel="stylesheet" href="~/css/header.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -51,7 +52,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a class="nav-link" asp-page="/Index">Home</a></li>
-                    <li class="nav-item active"><a class="nav-link" asp-page="/About">About</a></li>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                About us
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" asp-page="/welcome_to_EABA">Welcome to EABA</a>
+                                <a class="dropdown-item" asp-page="/presidents_opinion">presidents opinion statement</a>
+                                <a class="dropdown-item" asp-page="/committee">Committee</a>
+                                <a class="dropdown-item" asp-page="/constitution">Constitution</a>
+                                <a class="dropdown-item" asp-page="/EABA_history">EABA history</a>
+                            </div>
+                        </div>
+                    </li>
                     <li class="nav-item active"><a class="nav-link" asp-page="/Contact">Contact</a></li>
                     <li class="nav-item active"><a class="nav-link" asp-page="/BoardMembers/Index">Board of Directors</a></li>
                     <li class="nav-item active"><a class="nav-link" asp-page="/Event">Events</a></li>
