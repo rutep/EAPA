@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EABA</title>
-
     <environment include="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -24,7 +23,6 @@
     </environment>
 </head>
 <body>
-
     <div class="cont" style="background-color: #222;">
         <div class="container">
             <div class="row">
@@ -39,8 +37,6 @@
         </div>
     </div>
 
-
-
     <nav class="navbar navbar-expand-lg navbar-dark navbar-full" id="myHeader" style="background-color: #222; border-color:#080808">
         <div class="container">
             <div class="dropdown">
@@ -51,7 +47,6 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -82,7 +77,6 @@
         </div>
     </nav>
 
-
     <div>
         <div id="fb-root"></div>
         <script>
@@ -94,14 +88,11 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
     </div>
-
     <!--<partial name="_CookieConsentPartial" />-->
-    
+
     @RenderBody()
 
-    
     <partial name="_footer" />
-
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -123,7 +114,32 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        console.log("testig");
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+          header.classList.add("navbar navbar - expand - lg navbar - dark navbar - full");
+      } else {
+          header.classList.remove("sticky");
+      }
+    }
+
+</script>
+<style>
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index:1;
+    }
+
+</style>
