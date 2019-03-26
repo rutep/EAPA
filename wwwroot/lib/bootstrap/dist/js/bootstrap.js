@@ -1995,11 +1995,11 @@ if (typeof jQuery === 'undefined') {
     var selector = this.selector +
       '[data-target="' + target + '"],' +
       this.selector + '[href="' + target + '"]'
-
+    
     var active = $(selector)
       .parents('li')
       .addClass('active')
-
+    
     if (active.parent('.dropdown-menu').length) {
       active = active
         .closest('li.dropdown')
@@ -2129,6 +2129,7 @@ if (typeof jQuery === 'undefined') {
       && ($active.length && $active.hasClass('fade') || !!container.find('> .fade').length)
 
     function next() {
+      
       $active
         .removeClass('active')
         .find('> .dropdown-menu > .active')
@@ -2136,7 +2137,7 @@ if (typeof jQuery === 'undefined') {
         .end()
         .find('[data-toggle="tab"]')
           .attr('aria-expanded', false)
-
+      
       element
         .addClass('active')
         .find('[data-toggle="tab"]')
