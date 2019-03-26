@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace webApi.Pages
 {
     [AllowAnonymous]
-    public class committeeModel : PageModel
+    public class membershipModel : PageModel
     {
         public void OnGet()
         {

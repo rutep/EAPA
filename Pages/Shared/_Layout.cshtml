@@ -43,14 +43,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-full" id="myHeader" style="background-color: #222; border-color:#080808">
         <div class="container">
-            <a class="navbar-brand" href="#">EABA</a>
+            <div class="dropdown">
+                <a class="btn btn-secondary" asp-page="/" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    EABA
+                </a>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" asp-page="/Index">Home</a></li>
                     <li class="nav-item active">
                         <div class="dropdown">
                             <a class="btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,8 +68,13 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item active"><a class="nav-link" asp-page="/Contact">Contact</a></li>
-                    <li class="nav-item active"><a class="nav-link" asp-page="/BoardMembers/Index">Board of Directors</a></li>
+                    <li class="nav-item active">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary" asp-page="/membership" role="button" id="dropdownMenuLink">
+                                Membership
+                            </a>
+                        </div>
+                    </li>
                     <li class="nav-item active"><a class="nav-link" asp-page="/Event">Events</a></li>
                 </ul>
                 <partial name="_LoginPartial" />
