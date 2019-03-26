@@ -8,11 +8,18 @@
 
 <div class="container body-content">
 
+    <div id="loginContainer">
+        <div class="heading">
+            <div>
+                <h1>News</h1>
+            </div>
+        </div>
+    </div>
 
     @if (Model.Event.Count > 0)
     {
-        <div class="cont">
-            <div class="container">
+        <div id="loginContainer">
+            <div class="heading">
                 <div>
                     <h1>Upcoming events</h1>
                 </div>
@@ -21,25 +28,41 @@
         <div class="cart container">
             @foreach (var item in Model.Event)
             {
-
-                <a asp-page="/Event">
-                    <div class="card-size">
-                        <div class="card" style="width: 18rem;">
-                            <img class="images card-image-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Card title</h5>
-                                <p class="card-text">Starts: Date 11:10:2019</p>
+                if (item.Image == "")
+                {
+                    <a asp-page="/Event">
+                        <div class="card-size">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Card title</h5>
+                                    <p class="card-text">Starts: Date 11:10:2019</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                }
+                else
+                {
+                    <a asp-page="/Event">
+                        <div class="card-size">
+                            <div class="card" style="width: 18rem;">
+                                <img class="images card-image-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Card title</h5>
+                                    <p class="card-text">Starts: Date 11:10:2019</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+
             }
         </div>
     }
     else
     {
-        <div class="cont">
-            <div class="container">
+        <div id="headingContainer">
+            <div class="heading">
                 <div>
                     <h1>No upcoming events</h1>
                 </div>
@@ -47,6 +70,7 @@
         </div>
     }
 
+    <!--
     <div class="cont">
         <div class="container">
             <div>
@@ -54,27 +78,26 @@
             </div>
         </div>
     </div>
-
-    <div class="cont">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm ">
-                    <div class="fb-page" data-href="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/">European Association for Behaviour Analysis</a>
-                        </blockquote>
+        <div class="cont">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm ">
+                        <div class="fb-page" data-href="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/" class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/">European Association for Behaviour Analysis</a>
+                            </blockquote>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm ">
-                    <div class="fb-page" data-href="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/">European Association for Behaviour Analysis</a>
-                        </blockquote>
+                    <div class="col-sm ">
+                        <div class="fb-page" data-href="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/" class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/European-Association-for-Behaviour-Analysis-144073318974784/">European Association for Behaviour Analysis</a>
+                            </blockquote>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
     <div class="row">
@@ -116,4 +139,6 @@
             </ul>
         </div>
     </div>
+
+          -->
 </div>

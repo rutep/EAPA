@@ -8,25 +8,38 @@
 
 @if (Model.Event.Count > 0)
 {
-    <div class="cont">
-        <div class="container">
-            <div>
-                <h1>Upcoming events</h1>
-            </div>
+    
+    <div id="headingContainer">
+        <div class="heading">
+            <h1>Upcoming events</h1>
         </div>
     </div>
+
+
     <div class="cart container">
         @foreach (var item in Model.Event)
         {
-
-            <div class="card mb-3" style="width: 36rem;">
-                <img class="card-img-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            if (item.Image == "")
+            {
+                <div class="card mb-3" style="width: 36rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="card mb-3" style="width: 36rem;">
+                    <img class="card-img-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            }
         }
     </div>
 }
