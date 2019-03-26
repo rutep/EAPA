@@ -21,3 +21,5 @@ Password: !A123z
 Ef þörf er á að breyta þessum gögnum, eða bæta við, þá má finna þau appsettings.json
 
 http://europeanaba.org/
+https://www.abainternational.org/welcome.aspx
+http://atferd.no/
