@@ -23,6 +23,7 @@ namespace webApi.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IHostingEnvironment he;
+        private IFormFile file;
 
         public RegisterModel(
             UserManager<MyUser> userManager,
@@ -121,7 +122,8 @@ namespace webApi.Areas.Identity.Pages.Account
         [HttpPost("UploadPdf")]
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-
+            
+            var fileName = "";
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
@@ -143,16 +145,24 @@ namespace webApi.Areas.Identity.Pages.Account
 
                 if (Input.Country != "none")
                 {
-                    IFormFile file = HttpContext.Request.Form.Files[0];
-                    if (file.ContentType != "application/pdf")
+                    try
                     {
-                        ModelState.AddModelError(string.Empty, "File Extension Is Invalid - Only Upload PDF File");
-                        return Page();
+                        file = HttpContext.Request.Form.Files[0];
+                        if (file.ContentType != "application/pdf")
+                        {
+                            ModelState.AddModelError(string.Empty, "File Extension Is Invalid - Only Upload PDF File");
+                            return Page();
+                        }
+                        Random random = new System.Random();
+                        int id = random.Next(0, 1000000);
+                        fileName = Path.Combine(he.WebRootPath + "/images/usersPdf", id + file.FileName);
+                        user.pdfFile = id + file.FileName;
                     }
-                    Random random = new System.Random();
-                    int id = random.Next(0, 100000);
-                    var fileName = Path.Combine(he.WebRootPath + "/images/usersPdf", id + file.FileName);
-                    user.pdfFile = id + file.FileName;
+                    catch
+                    {
+
+                    }
+
                     var result = await _userManager.CreateAsync(user, Input.Password);
                     //User has to chose a country
 
