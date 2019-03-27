@@ -48,6 +48,9 @@
     <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\Identity\Pages\Account\Admin\admin_edit_pdf.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Identity\Pages\Account\Admin\ManageUsers.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

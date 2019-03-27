@@ -6,30 +6,50 @@
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
 
+<div class="container" id="containerLayout">
 
-<div class="cont">
-    <div class="container">
-        <div>
-            <h1>Delete Event</h1>
-            <h3>Are you sure you want to delete this?</h3>
+    <h2>Manage your Admin account</h2>
+    <div>
+        <h4>Change your Admin settings</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
+                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Grants/Index">Edit News</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="cont">
+                    <div class="container">
+                        <div>
+                            <h1>Delete Event</h1>
+                            <h3>Are you sure you want to delete this?</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="cart container">
+                    <div class="card mb-3" style="width: 36rem;">
+                        <img class="card-img-top" src="~/images/events/@Model.Event.Image" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.Event.Title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <form method="post">
+                                <input type="hidden" asp-for="Event.Id" />
+                                <input type="submit" value="Delete" class="btn btn-default" /> |
+                                <a asp-page="./Index">Back to List</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
-<div class="cart container">
-    <div class="card mb-3" style="width: 36rem;">
-        <img class="card-img-top" src="~/images/events/@Model.Event.Image" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">@Model.Event.Title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            <form method="post">
-                <input type="hidden" asp-for="Event.Id" />
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                <a asp-page="./Index">Back to List</a>
-            </form>
-        </div>
-    </div>
-</div>
-
