@@ -35,7 +35,7 @@ namespace webApi.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-             he = e;
+            he = e;
         }
 
         [BindProperty]
@@ -140,34 +140,33 @@ namespace webApi.Areas.Identity.Pages.Account
                     city = Input.city,
                     country = Input.Country,
                 };
-                if (HttpContext.Request.Form.Files.Count > 0)
+
+                if (Input.Country != "none")
                 {
-                    Random random = new System.Random();
-                    int id = random.Next(0, 100000);
                     IFormFile file = HttpContext.Request.Form.Files[0];
-                    if(file.ContentType != "application/pdf"){
+                    if (file.ContentType != "application/pdf")
+                    {
                         ModelState.AddModelError(string.Empty, "File Extension Is Invalid - Only Upload PDF File");
                         return Page();
                     }
+                    Random random = new System.Random();
+                    int id = random.Next(0, 100000);
                     var fileName = Path.Combine(he.WebRootPath + "/images/usersPdf", id + file.FileName);
                     user.pdfFile = id + file.FileName;
-
-                    using (var stream = new FileStream(fileName, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                }
-                else
-                {
-                    user.pdfFile = "";
-                }
-                if (Input.Country != "none")
-                {
                     var result = await _userManager.CreateAsync(user, Input.Password);
                     //User has to chose a country
 
                     if (result.Succeeded)
                     {
+                        if (HttpContext.Request.Form.Files.Count > 0)
+                        {
+                            // If we are successful, and the pdf exists. Create the pdf locally
+                            using (var stream = new FileStream(fileName, FileMode.Create))
+                            {
+                                file.CopyTo(stream);
+                            }
+                        }
+
                         _logger.LogInformation("User created a new account with password.");
 
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
