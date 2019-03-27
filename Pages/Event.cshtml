@@ -6,52 +6,56 @@
 }
 
 
-@if (Model.Event.Count > 0)
-{
-    
-    <div id="headingContainer">
-        <div class="heading">
-            <h1>Upcoming events</h1>
-        </div>
-    </div>
+<div class="container">
+    @if (Model.Event.Count > 0)
+    {
 
-
-    <div class="cart container">
-        @foreach (var item in Model.Event)
-        {
-            if (item.Image == "")
-            {
-            <div class="card mb-3" style="width: 36rem;">
-                <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
-                    <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
-                    <p class="card-text">Starts: @Html.DisplayFor(modelItem => item.StartDate)</p>
-                    <p class="card-text">Ends: @Html.DisplayFor(modelItem => item.date)</p>
-                </div>
+        <div id="headingContainer">
+            <div class="heading">
+                <h1>Upcoming events</h1>
             </div>
-            }
-            else
+        </div>
+
+
+            @foreach (var item in Model.Event)
             {
-                <div class="card mb-3" style="width: 36rem;">
-                    <img class="images card-image-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
-                        <p class="card-text">Starts: @Html.DisplayFor(modelItem => item.StartDate)</p>
-                        <p class="card-text">Ends: @Html.DisplayFor(modelItem => item.date)</p>
+                if (item.Image == "")
+                {
+                    <div class="card mb-3"  style="width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
+                            <p class="card-text">Starts: @Html.DisplayFor(modelItem => item.StartDate)</p>
+                            <p class="card-text">Ends: @Html.DisplayFor(modelItem => item.date)</p>
+                            <p>Link to registration: <a>@Html.DisplayFor(modelItem => item.eventLink)</a></p>
+                        </div>
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class="card mb-3" style="width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title pads">@Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p class="card-text">
+                                <img class="images card-image-top" style="float: left; padding: 10px;" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                                @Html.DisplayFor(modelItem => item.text)
+                            </p>
+                            <p class="card-text">Starts: @Html.DisplayFor(modelItem => item.StartDate)</p>
+                            <p class="card-text">Ends: @Html.DisplayFor(modelItem => item.date)</p>
+                            <p>Link to registration: <a href="@Html.DisplayFor(modelItem => item.eventLink)">@Html.DisplayFor(modelItem => item.eventLink)</a></p>
+                        </div>
+                    </div>
+                }
             }
-        }
-    </div>
-}
-else
-{
-    <div id="headingContainer">
-        <div class="headin">
-            <div>
-                <h1>No upcoming events</h1>
+    }
+    else
+    {
+        <div id="headingContainer">
+            <div class="headin">
+                <div>
+                    <h1>No upcoming events</h1>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>

@@ -5,23 +5,22 @@
     ViewData["Title"] = "grants";
 }
 
+<div class="container">
+    @if (Model.Grant.Count > 0)
+    {
 
-@if (Model.Grant.Count > 0)
-{
-
-    <div id="headingContainer">
-        <div class="heading">
-            <h1>News</h1>
+        <div id="headingContainer">
+            <div class="heading">
+                <h1>News</h1>
+            </div>
         </div>
-    </div>
 
 
-    <div class="cart container">
         @foreach (var item in Model.Grant)
         {
             if (item.Image == "")
             {
-                <div class="card mb-3" style="width: 36rem;">
+                <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
                         <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
@@ -30,24 +29,26 @@
             }
             else
             {
-                <div class="card mb-3" style="width: 36rem;">
-                    <img class="images card-image-top" src="~/images/grants/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
+                        <h5 class="card-title pads">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <p class="card-text">
+                            <img class="images card-image-top" style="float: left; padding: 10px;" src="~/images/grants/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                            @Html.DisplayFor(modelItem => item.text)
+                        </p>
                     </div>
                 </div>
             }
         }
-    </div>
-}
-else
-{
-    <div id="headingContainer">
-        <div class="headin">
-            <div>
-                <h1>No News</h1>
+    }
+    else
+    {
+        <div id="headingContainer">
+            <div class="headin">
+                <div>
+                    <h1>No News</h1>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
