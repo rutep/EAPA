@@ -9,7 +9,7 @@ using webApi.Data;
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190319165050_MyUser")]
+    [Migration("20190327184956_MyUser")]
     partial class MyUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,11 +41,15 @@ namespace webApi.Migrations
 
                     b.Property<string>("Image");
 
+                    b.Property<string>("StartDate");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<string>("date");
+
+                    b.Property<string>("eventLink");
 
                     b.Property<string>("text");
 
@@ -229,7 +233,11 @@ namespace webApi.Migrations
 
                     b.Property<string>("city");
 
+                    b.Property<bool>("conference");
+
                     b.Property<string>("country");
+
+                    b.Property<string>("field_of_interest");
 
                     b.Property<string>("firstName");
 
@@ -244,6 +252,8 @@ namespace webApi.Migrations
                     b.Property<string>("postcode");
 
                     b.Property<string>("region");
+
+                    b.Property<bool>("volunteer");
 
                     b.HasKey("Id");
 
@@ -273,8 +283,8 @@ namespace webApi.Migrations
 
                     b.Property<string>("text");
 
-                    b.Property<int>("voteId")
-                        .HasMaxLength(100);
+                    b.Property<string>("voteId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
