@@ -83,7 +83,7 @@ namespace webApi.Areas.Identity.Pages.Account
 
             [Display(Name = "Address2")]
             public string address2 { get; set; }
-
+            [Required]
             [Display(Name = "Your Affiliation")]
             public string affiliation { get; set; }
 
