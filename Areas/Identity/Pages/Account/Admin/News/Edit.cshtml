@@ -1,5 +1,5 @@
 ﻿@page
-@model webApi.Pages.Events.EditModel
+@model webApi.Pages.Grants.EditModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -17,8 +17,8 @@
                 <div class="list-group">
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
-                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
+                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/News/Index">Edit News</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
@@ -28,7 +28,7 @@
                 <div class="cont">
                     <div class="container">
                         <div>
-                            <h1>Edit Event</h1>
+                            <h1>Edit News</h1>
                         </div>
                     </div>
                 </div>
@@ -37,26 +37,26 @@
 
                 <div class="cart container">
                     <div class="card mb-3" style="width: 36rem;">
-                        <img class="card-img-top" src="~/images/events/@Model.Event.Image" alt="Card image cap">
+                        <img class="card-img-top" src="~/images/grants/@Model.Grant.Image" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">@Model.Event.Title</h5>
+                            <h5 class="card-title">@Model.Grant.Title</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                             <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <input type="hidden" asp-for="Event.Id" />
+                                <input type="hidden" asp-for="Grant.Id" />
                                 <div class="form-group">
-                                    <label asp-for="Event.Title" class="control-label"></label>
-                                    <input asp-for="Event.Title" class="form-control" />
-                                    <span asp-validation-for="Event.Title" class="text-danger"></span>
+                                    <label asp-for="Grant.Title" class="control-label"></label>
+                                    <input asp-for="Grant.Title" class="form-control" />
+                                    <span asp-validation-for="Grant.Title" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Event.text" class="control-label"></label>
-                                    <input asp-for="Event.text" class="form-control" />
-                                    <span asp-validation-for="Event.text" class="text-danger"></span>
+                                    <label asp-for="Grant.text" class="control-label"></label>
+                                    <input asp-for="Grant.text" class="form-control" />
+                                    <span asp-validation-for="Grant.text" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="file" name="files" value="Event.Image" multiple />
+                                    <input type="file" name="files" value="Grant.Image" multiple />
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Save" class="btn btn-primary" />
