@@ -160,6 +160,11 @@ namespace webApi.Areas.Identity.Pages.Account
                 {
                     try
                     {
+                        /*
+                        https://github.com/sendgrid/sendgrid-csharp/blob/master/USE_CASES.md#attachments
+                        Þarf að skrá skjali locally áður en það er sent áfram á Server?
+                        
+                         */
                         file = HttpContext.Request.Form.Files[0];
                         if (file.ContentType != "application/pdf")
                         {
