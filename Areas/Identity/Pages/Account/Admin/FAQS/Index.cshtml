@@ -1,0 +1,68 @@
+﻿@page
+@model webApi.Areas.Identity.Pages.Account.Admin.FAQS.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container" id="containerLayout">
+
+    <h2>Manage your Admin account</h2>
+    <div>
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Index">Profile</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
+                    <a class="list-group-item list-group-item-action " href="/Identity/Account/Admin/Events/Index">Edit Events</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
+                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/FAQS">FAQS</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                
+                <div class="row">
+                    <p>
+                        <a asp-page="Create">Create New</a>
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FAQ[0].questions)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FAQ[0].answers)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.FAQ)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.questions)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.answers)
+                                    </td>
+                                    <td>
+                                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
