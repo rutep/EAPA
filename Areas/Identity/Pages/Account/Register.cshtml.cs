@@ -87,6 +87,10 @@ namespace webApi.Areas.Identity.Pages.Account
             [Display(Name = "Your Affiliation")]
             public string affiliation { get; set; }
 
+            [Required]
+            [Display(Name="Field of Interest")]
+            public string interest{get;set;}
+
             [Display(Name = "Postcode")]
             [DataType(DataType.PostalCode)]
             public string postcode { get; set; }
@@ -101,6 +105,12 @@ namespace webApi.Areas.Identity.Pages.Account
             public string Country { get; set; }
             [Display(Name = "Pdf file")]
             public string pdfFile { get; set; }
+
+            [Display(Name="Volunteer")]
+            public string volunteer{get;set;}
+
+            [Display(Name="Conference")]
+            public string conference{get;set;}
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -137,10 +147,13 @@ namespace webApi.Areas.Identity.Pages.Account
                     address = Input.address,
                     address2 = Input.address2,
                     affiliation = Input.affiliation,
+                    field_of_interest = Input.interest,
                     postcode = Input.postcode,
                     region = Input.region,
                     city = Input.city,
                     country = Input.Country,
+                    volunteer = Input.volunteer,
+                    conference = Input.conference,
                 };
 
                 if (Input.Country != "none")
