@@ -29,25 +29,24 @@
                         </div>               
                     <div class="row">
                        
-                            <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-group">
-                                    <label asp-for="BoardMember.Name" class="control-label"></label>
-                                    <input asp-for="BoardMember.Name" class="form-control" />
-                                    <span asp-validation-for="BoardMember.Name" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="BoardMember.BoardRole" class="control-label"></label>
-                                    <input asp-for="BoardMember.BoardRole" class="form-control" />
-                                    <span asp-validation-for="BoardMember.BoardRole" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <input type="file" name="files" multiple />
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Create" class="btn btn-primary" />
-                                </div>
-                            </form>                   
+                        <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="BoardMember.Name" class="control-label"></label>
+                                <input asp-for="BoardMember.Name" class="form-control" />
+                                <span asp-validation-for="BoardMember.Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Example textarea</label>
+                                <textarea textarea asp-for="BoardMember.BoardRole" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="files" multiple />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>                   
                     </div>
                 </div>
                 <div>
