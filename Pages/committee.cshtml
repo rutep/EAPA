@@ -19,52 +19,57 @@
     </div>
 </div>
 
-@if (Model.BoardMember.Count > 0)
-{
+<div class="container">
+    @if (Model.BoardMember.Count > 0)
+    {
 
-    <div id="headingContainer">
-        <div class="heading">
-            <h1>Board members</h1>
-        </div>
-    </div>
-
-
-    <div class="cart container">
-        @foreach (var item in Model.BoardMember)
-        {
-            if (item.Image == "")
-            {
-                <div class="card mb-3" style="width: 36rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.BoardRole)</p>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="card mb-3" style="width: 36rem;">
-                    <img class="images card-image-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.BoardRole)</p>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
-                    </div>
-                </div>
-            }
-        }
-    </div>
-}
-else
-{
-    <div id="headingContainer">
-        <div class="heading">
-            <div>
-                <h1>No board</h1>
+        <div id="headingContainer">
+            <div class="heading">
+                <h1>Board members</h1>
             </div>
         </div>
-    </div>
-}
 
 
+        <div class="cart">
+            @foreach (var item in Model.BoardMember)
+            {
+                if (item.Image == "")
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.BoardRole)</p>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card mb-3">
+
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.BoardRole)</p>
+                            <p class="card-text">
+                                <img class="images card-image-top" style="float: left; padding: 10px;" src="~/images/boardmembers/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                                @Html.DisplayFor(modelItem => item.text)
+                            </p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <div id="headingContainer">
+            <div class="heading">
+                <div>
+                    <h1>No board</h1>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
