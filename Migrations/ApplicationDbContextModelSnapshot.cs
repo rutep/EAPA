@@ -231,7 +231,7 @@ namespace webApi.Migrations
 
                     b.Property<string>("city");
 
-                    b.Property<bool>("conference");
+                    b.Property<string>("conference");
 
                     b.Property<string>("country");
 
@@ -251,7 +251,7 @@ namespace webApi.Migrations
 
                     b.Property<string>("region");
 
-                    b.Property<bool>("volunteer");
+                    b.Property<string>("volunteer");
 
                     b.HasKey("Id");
 

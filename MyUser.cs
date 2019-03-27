@@ -15,9 +15,9 @@ public class MyUser : IdentityUser
     public string city { get; set; }
     public string country { get; set; }
     public string pdfFile{get;set;}
-    public bool volunteer { get; set; }
-    public bool conference { get; set; }
-    public String field_of_interest { get; set; }
+    public string volunteer { get; set; }
+    public string conference { get; set; }
+    public string field_of_interest { get; set; }
 
     // public DateTime StartDate { get; set; }
     // public DateTime EndDate { get; set; }
