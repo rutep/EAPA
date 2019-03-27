@@ -14,6 +14,7 @@
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="wwwroot\images\events\" />
     <Folder Include="wwwroot\images\grants\" />
+    <Folder Include="wwwroot\images\boardmembers\" />
     <Folder Include="wwwroot\images\usersPdf\" />
     <Folder Include="wwwroot\images\votes\" />
   </ItemGroup>
