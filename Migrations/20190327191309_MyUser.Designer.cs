@@ -9,7 +9,7 @@ using webApi.Data;
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190327184956_MyUser")]
+    [Migration("20190327191309_MyUser")]
     partial class MyUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -233,7 +233,7 @@ namespace webApi.Migrations
 
                     b.Property<string>("city");
 
-                    b.Property<bool>("conference");
+                    b.Property<string>("conference");
 
                     b.Property<string>("country");
 
@@ -253,7 +253,7 @@ namespace webApi.Migrations
 
                     b.Property<string>("region");
 
-                    b.Property<bool>("volunteer");
+                    b.Property<string>("volunteer");
 
                     b.HasKey("Id");
 

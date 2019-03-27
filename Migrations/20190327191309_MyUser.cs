@@ -52,8 +52,8 @@ namespace webApi.Migrations
                     city = table.Column<string>(nullable: true),
                     country = table.Column<string>(nullable: true),
                     pdfFile = table.Column<string>(nullable: true),
-                    volunteer = table.Column<bool>(nullable: false),
-                    conference = table.Column<bool>(nullable: false),
+                    volunteer = table.Column<string>(nullable: true),
+                    conference = table.Column<string>(nullable: true),
                     field_of_interest = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
