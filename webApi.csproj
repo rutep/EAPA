@@ -34,19 +34,19 @@
     <Content Update="Areas\Identity\Pages\Account\Admin\Events\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Create.cshtml">
+    <Content Update="Areas\Identity\Pages\Account\Admin\News\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Delete.cshtml">
+    <Content Update="Areas\Identity\Pages\Account\Admin\News\Delete.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Details.cshtml">
+    <Content Update="Areas\Identity\Pages\Account\Admin\News\Details.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Edit.cshtml">
+    <Content Update="Areas\Identity\Pages\Account\Admin\News\Edit.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Identity\Pages\Account\Admin\Grants\Index.cshtml">
+    <Content Update="Areas\Identity\Pages\Account\Admin\News\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Identity\Pages\Account\Admin\admin_edit_pdf.cshtml">
