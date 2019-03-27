@@ -1,0 +1,21 @@
+﻿@page
+@model webApi.Pages.FAQModel
+
+@{
+    ViewData["Title"] = "FAQ";
+}
+<body>
+    <div class="container">
+        <h1>Answers to frequently asked questions</h1>
+        <hr/>
+        @foreach (var item in Model.FAQS)
+        {
+            <h3>@item.questions</h3>
+            <p>@item.answers</p>
+        }
+    </div>
+
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
