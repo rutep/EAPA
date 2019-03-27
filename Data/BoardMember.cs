@@ -12,6 +12,7 @@ namespace BoardMemberEntity.Data
 
         public string Name { get; set; }
         public string BoardRole { get; set; }
+        public string text { get; set; }
         public string Image { get; set; }
     }
 

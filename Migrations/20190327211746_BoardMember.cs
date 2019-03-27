@@ -6,12 +6,17 @@ namespace webApi.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.AddColumn<string>(
+                name: "text",
+                table: "BoardMember",
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.DropColumn(
+                name: "text",
+                table: "BoardMember");
         }
     }
 }

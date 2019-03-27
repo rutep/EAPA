@@ -9,14 +9,14 @@ using webApi.Data;
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190319155356_BoardMember")]
+    [Migration("20190327211746_BoardMember")]
     partial class BoardMember
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085");
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
 
             modelBuilder.Entity("BoardMemberEntity.Data.BoardMember", b =>
                 {
@@ -28,6 +28,8 @@ namespace webApi.Migrations
                     b.Property<string>("Image");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("text");
 
                     b.HasKey("Id");
 
@@ -41,11 +43,15 @@ namespace webApi.Migrations
 
                     b.Property<string>("Image");
 
+                    b.Property<string>("StartDate");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<string>("date");
+
+                    b.Property<string>("eventLink");
 
                     b.Property<string>("text");
 
@@ -229,7 +235,11 @@ namespace webApi.Migrations
 
                     b.Property<string>("city");
 
+                    b.Property<string>("conference");
+
                     b.Property<string>("country");
+
+                    b.Property<string>("field_of_interest");
 
                     b.Property<string>("firstName");
 
@@ -239,9 +249,13 @@ namespace webApi.Migrations
 
                     b.Property<string>("other_email");
 
+                    b.Property<string>("pdfFile");
+
                     b.Property<string>("postcode");
 
                     b.Property<string>("region");
+
+                    b.Property<string>("volunteer");
 
                     b.HasKey("Id");
 
@@ -271,8 +285,8 @@ namespace webApi.Migrations
 
                     b.Property<string>("text");
 
-                    b.Property<int>("voteId")
-                        .HasMaxLength(100);
+                    b.Property<string>("voteId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

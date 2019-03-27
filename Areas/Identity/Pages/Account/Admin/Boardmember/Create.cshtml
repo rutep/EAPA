@@ -38,8 +38,12 @@
                                 <span asp-validation-for="BoardMember.Name" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Example textarea</label>
-                                <textarea textarea asp-for="BoardMember.BoardRole" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <label asp-for="BoardMember.BoardRole" class="control-label"></label>
+                                <input asp-for="BoardMember.BoardRole" class="form-control" />
+                                <span asp-validation-for="BoardMember.BoardRole" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <textarea textarea asp-for="BoardMember.text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="file" name="files" multiple />
