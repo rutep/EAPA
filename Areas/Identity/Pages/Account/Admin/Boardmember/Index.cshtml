@@ -7,51 +7,69 @@
      Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
 
-<div class="cont">
-    <div class="container">
-        <div>
-            <h1>Create Boardmember</h1>
+<div class="container" id="containerLayout">
+
+    <h2>Manage your Admin account</h2>
+    <div>
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Grants/Index">Edit News</a>
+                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="cont">
+                    <div>
+                        <h2>Boardmembers</h2>
+                    </div>
+                    <div class="cart container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BoardMember[0].Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BoardMember[0].BoardRole)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BoardMember[0].Image)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.BoardMember)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BoardRole)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Image)
+                                        </td>
+                                        <td>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-    <p>
-        <a asp-page="Create">Create New BoardMember</a>
-    </p>
     </div>
-</div>
-<div class="cart container">
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BoardMember[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BoardMember[0].BoardRole)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BoardMember[0].Image)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.BoardMember) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BoardRole)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
 </div>
