@@ -20,6 +20,7 @@ namespace webApi.Data
         public DbSet<Grant.Data.Grant> Grant { get; set; }
        
         public DbSet<Vote.Data.Vote> Vote { get; set; }
+        public DbSet<FAQ.Data.FAQ> Faq { get; set; }
         public DbSet<BoardMemberEntity.Data.BoardMember> BoardMember { get; set; }
 
         

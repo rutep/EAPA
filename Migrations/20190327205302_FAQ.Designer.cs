@@ -2,19 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using webApi.Data;
 
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190327205302_FAQ")]
+    partial class FAQ
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085");
 
             modelBuilder.Entity("BoardMemberEntity.Data.BoardMember", b =>
                 {
@@ -26,8 +28,6 @@ namespace webApi.Migrations
                     b.Property<string>("Image");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("text");
 
                     b.HasKey("Id");
 

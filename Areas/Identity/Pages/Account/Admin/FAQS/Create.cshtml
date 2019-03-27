@@ -1,0 +1,60 @@
+﻿@page
+@model webApi.Areas.Identity.Pages.Account.Admin.FAQS.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container" id="containerLayout">
+
+    <h2>Manage your Admin account</h2>
+    <div>
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Index">Profile</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
+                    <a class="list-group-item list-group-item-action " href="/Identity/Account/Admin/Events/Index">Edit Events</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
+                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/FAQS">FAQS</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="cont">
+                    <div>
+                        <h2>Create FAQ</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="FAQ.questions" class="control-label"></label>
+                            <input asp-for="FAQ.questions" class="form-control" />
+                            <span asp-validation-for="FAQ.questions" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FAQ.answers" class="control-label"></label>
+                            <input asp-for="FAQ.answers" class="form-control" />
+                            <span asp-validation-for="FAQ.answers" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <a asp-page="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
