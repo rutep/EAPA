@@ -70,6 +70,11 @@
                 <span asp-validation-for="Input.affiliation" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Input.interest"></label>
+                <input asp-for="Input.interest" class="form-control" />
+                <span asp-validation-for="Input.interest" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Input.postcode"></label>
                 <input asp-for="Input.postcode" class="form-control" />
                 <span asp-validation-for="Input.postcode" class="text-danger"></span>
@@ -335,11 +340,29 @@
                 <label>Member type</label>
                 <br />
                 <select class="form-control">
-                    <option class="text-danger">Full Member</option>
-                    <option class="text-danger">Affiliate Member</option>
-                    <option class="text-danger">Student Member</option>
+                    <option class="text-info">Full Member</option>
+                    <option class="text-info">Affiliate Member</option>
+                    <option class="text-info">Student Member</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label>Would you be interested in being a volunteer in the EABA board?</label>
+                <br />
+               <select asp-for="Input.volunteer" class="form-control">
+                    <option class="text-primary">Yes, I am interested</option>
+                    <option class="text-danger">No, I am not interested</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Would you be available to present at our conferences and summer schools?</label>
+                <br />
+                <select asp-for="Input.conference" class="form-control">
+                    <option class="text-primary">Yes, I am available</option>
+                    <option class="text-primary">I might be available at a later date</option>
+                    <option class="text-danger">I am not available</option>
+                </select>
+            </div>
+
             <p>Please submit a pdf file of your degree, it is required to become a full member.</p>
             <div class="form-group">
                     <input type="file" name="files" multiple />
