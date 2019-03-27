@@ -14,7 +14,7 @@ namespace webApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085");
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
 
             modelBuilder.Entity("BoardMemberEntity.Data.BoardMember", b =>
                 {
@@ -26,6 +26,8 @@ namespace webApi.Migrations
                     b.Property<string>("Image");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("text");
 
                     b.HasKey("Id");
 

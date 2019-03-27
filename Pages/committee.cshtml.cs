@@ -5,15 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace webApi.Pages
 {
     [AllowAnonymous]
     public class committeeModel : PageModel
     {
-        public void OnGet()
-        {
 
+        private readonly webApi.Data.ApplicationDbContext _context;
+
+        public committeeModel(webApi.Data.ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public IList<BoardMemberEntity.Data.BoardMember> BoardMember { get; set; }
+
+        public async Task OnGetAsync()
+        {
+            BoardMember = await _context.BoardMember.ToListAsync();
         }
     }
 }
