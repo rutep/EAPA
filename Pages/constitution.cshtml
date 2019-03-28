@@ -92,3 +92,74 @@
     </div>
 
 </div>
+
+<div class="container" style="margin-top: 60px;">
+    <div class="card">
+        <h5 class="card-header text-center">The Committee will serve for two years, between the EABA conferences</h5>
+        <div class="card-body">
+            <ol>
+                <li class="pads"><b>President: </b>with overall responsibility for the development of EABA, calling meetings, organising working parties to deal with specific issues, organising a committee to hold bi-annual conferences, and organising EABA committee elections. At the end of his/her term, the President remains for one extra year as Past President to ensure continuity.</li>
+                <li class="pads"><b>Past president: </b>the previous President who remains for one or two extra years to ensure continuity.</li>
+                <li class="pads"><b>Treasurer: </b>with responsibility for managing the EABA account, collection of membership fees and conference registration, and to liaise with other organisations and providers with regard to any financial matters.</li>
+                <li class="pads"><b>Secretary: </b>with responsibility for maintaining the membership list, organising and maintaining the EABA web site, informing EJoBA of members’ addresses, and minuting EABA committee meetings.</li>
+                <li class="pads"><b>Basic Science Representative: </b>with responsibility for maintaining and forwarding the basic science objectives of the organisation through links with other academic institutions.</li>
+                <li class="pads"><b>Applied Science Representative: </b> with responsibility for maintaining and forwarding the applied science objectives of the organisation and liaising with accreditation boards, etc.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    @if (Model.BoardMember.Count > 0)
+    {
+
+        <div id="headingContainer">
+            <div class="heading">
+                <h1>Board members</h1>
+            </div>
+        </div>
+
+
+        <div class="cart">
+            @foreach (var item in Model.BoardMember)
+            {
+                if (item.Image == "")
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title pads">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <p class="card-text pads">@Html.DisplayFor(modelItem => item.BoardRole)</p>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.text)</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card mb-3">
+
+                        <div class="card-body">
+                            <h5 class="card-title pads">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <p class="card-text pads">@Html.DisplayFor(modelItem => item.BoardRole)</p>
+                            <p class="card-text">
+                                <img class="images card-image-top" style="float: left; padding: 10px;" src="~/images/boardmembers/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
+                                @Html.DisplayFor(modelItem => item.text)
+                            </p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <div id="headingContainer">
+            <div class="heading">
+                <div>
+                    <h1>No board</h1>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
