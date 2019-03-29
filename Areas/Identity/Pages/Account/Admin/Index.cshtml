@@ -7,65 +7,64 @@
 }
 
 
-<div class="container" id="containerLayout">
-    <h2>Manage your Admin account</h2>
-    <div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Index">Profile</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="cont">
-                    <div>
-                        <h2>Profile</h2>
+<div class="card" id="containerLayout" style="padding: 20px">   
+        <h2 class="heading">Manage your Admin account</h2>
+        <div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Index">Profile</a>
+                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
+                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
+                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
+                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
+                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
+                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
+                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
+                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <form id="profile-form" method="post">
-                            <div asp-validation-summary="All" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="Username"></label>
-                                <input asp-for="Username" class="form-control" disabled />
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Input.Email"></label>
-                                @if (Model.IsEmailConfirmed)
-                                {
-                                    <div class="input-group">
+                <div class="col-md-9 center" >
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                        <div>
+                            <h2 class="">Profile</h2>
+                        </div>
+                            <form id="profile-form" method="post">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Username"></label>
+                                    <input asp-for="Username" class="form-control" disabled />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Email"></label>
+                                    @if (Model.IsEmailConfirmed)
+                                    {
+                                        <div class="input-group">
+                                            <input asp-for="Input.Email" class="form-control" />
+                                            <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                                        </div>
+                                    }
+                                    else
+                                    {
                                         <input asp-for="Input.Email" class="form-control" />
-                                        <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <input asp-for="Input.Email" class="form-control" />
-                                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
-                                }
-                                <span asp-validation-for="Input.Email" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Input.PhoneNumber"></label>
-                                <input asp-for="Input.PhoneNumber" class="form-control" />
-                                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </form>
+                                        <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                                    }
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.PhoneNumber"></label>
+                                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
