@@ -6,41 +6,34 @@
 }
 <div class="container" id="containerLayout">
 
-    <h2 class="heading">Manage your Admin account</h2>
-    <div>
-        <hr />
-        <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Index">Profile</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
-                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
-                </div>
-            </div>
-            <div class="col-md-9">
+        <div class="card" id="containerLayout" style="padding: 20px">
+            <h2 class="heading">Manage your Admin account</h2>
+            <div>
+                <hr />
+                <div class="row">
+                    <partial name="ANav" />
+                    <div class="col-md-9">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <h2>Edit pdf files</h2>
+                                <p>This is the upload for the <b>EABA by-laws</b>, once uploaded this will replace the previous file. <br> <b>This process is irreversible</b></p>
+                                <form method="post" asp-controller="UploadByLaws" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <input type="file" name="files-law" multiple />
+                                    </div>
 
-                <h2>Edit pdf files</h2>
-                <p>This is the upload for the <b>EABA by-laws</b>, once uploaded this will replace the previous file. <br> <b>This process is irreversible</b></p>
-                 <form method="post" asp-controller="UploadByLaws" enctype="multipart/form-data">
-                 <div class="form-group">
-                    <input type="file" name="files-law" multiple />
-                </div>
+                                    <p>This is the upload for the <b>Organization Information</b>, once uploaded this will replace the previous file. <br> <b>This process is irreversible</b></p>
+                                    <div class="form-group">
+                                        <input type="file" name="files-info" multiple />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Upload Files</button>
+                                </form>
 
-                 <p>This is the upload for the <b>Organization Information</b>, once uploaded this will replace the previous file. <br> <b>This process is irreversible</b></p>
-                 <div class="form-group">
-                    <input type="file" name="files-info" multiple />
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <button type="submit" class="btn btn-primary">Upload Files</button>
-                </form>
-                
             </div>
         </div>
     </div>
-</div>
-

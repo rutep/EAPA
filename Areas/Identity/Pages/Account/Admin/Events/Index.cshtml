@@ -6,58 +6,46 @@
     ViewData["ActivePage"] = "Events";
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
-<div class="container" id="containerLayout">
-
-    <h2>Manage your Admin account</h2>
+<div class="card" id="containerLayout" style="padding: 20px">
+    <h2 class="heading">Manage your Admin account</h2>
     <div>
         <hr />
         <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Index">Profile</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
-                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="cont">
-                    <div class="container">
-                        <div>
-                            <h1>Create Event</h1>
-                        </div>
-                        <p>
-                            <a asp-page="Create">Create New Event</a>
-                        </p>
-                    </div>
-                </div>
+            <partial name="ANav" />
+            <div class="col-md-9 center">
+                <div class="row justify-content-center">
 
+                    <h2 class="heading"><a asp-page="Create">Create New Event</a></h2>
 
-                <div class="cart container">
-
-                    @foreach (var item in Model.Event)
+                    @if (Model.Event.Count > 0)
                     {
 
-                        <div class="card-size">
-                            <div class="card" style="width: 18rem;">
-                                <img class="images card-image-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Title: @Html.DisplayFor(modelItem => item.Title)</h5>
-                                    <p class="card-text">Text: @Html.DisplayFor(modelItem => item.Title)  Lorem Ipsum.</p>
-                                    <p class="card-text">Register link: <a href="@Html.DisplayFor(modelItem => item.eventLink)"> @Html.DisplayFor(modelItem => item.eventLink)</a></p>
-                                    <p class="card-text">Starting date: @Html.DisplayFor(modelItem => item.StartDate)</p>
-                                    <p class="card-text">Ending date: @Html.DisplayFor(modelItem => item.date)</p>
-                                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                                </div>
-                            </div>
-                        </div>
+
+                        <table class="table">
+                            <thead class="text-light" style="background:black; ">
+                                <tr>
+                                    <th scope="col"> @Html.DisplayNameFor(model => model.Event[0].Title) </th>
+                                    <th scope="col"> Starting date </th>
+                                    <th scope="col"> End date </th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Event)
+                                {
+                                    <tr>
+                                        <td> @Html.DisplayFor(modelItem => item.Title) </td>
+                                        <td> @Html.DisplayFor(modelItem => item.StartDate) </td>
+                                        <td> @Html.DisplayFor(modelItem => item.date) </td>
+                                        <td>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     }
                 </div>
             </div>

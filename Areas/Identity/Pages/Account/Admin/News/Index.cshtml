@@ -6,9 +6,8 @@
     ViewData["ActivePage"] = "Grants";
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
-<div class="container" id="containerLayout">
-
-    <h2>Manage your Admin account</h2>
+<div class="card" id="containerLayout" style="padding: 20px">
+    <h2 class="heading">Manage your Admin account</h2>
     <div>
         <hr />
         <div class="row">
@@ -17,47 +16,49 @@
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Index">Profile</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
-                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/News/Index">Edit News</a>
+                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
+                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
+                    <!--<a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>-->
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
                 </div>
             </div>
-            <div class="col-md-9">
-                <div class="cont">
-                    <div class="container">
-                        <div>
-                            <h1>Create News</h1>
-                        </div>
-                        <p>
-                            <a asp-page="Create">Create News</a>
-                        </p>
-                    </div>
-                </div>
+            <div class="col-md-9 center">
+                <div class="row justify-content-center">
 
+                    <h2 class="heading"><a asp-page="Create">Publish News</a></h2>
 
-                <div class="cart container">
-                    @foreach (var item in Model.Grant)
+                    @if (Model.Grant.Count > 0)
                     {
 
-                        <div class="card-size">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <a card-image-top" href="~/images/grants/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">@Html.DisplayFor(modelItem => item.Image)</a>
-                                    <h5 class="card-title text-center">Title: @Html.DisplayFor(modelItem => item.Title)</h5>
-                                    <p class="card-text">Text: @Html.DisplayFor(modelItem => item.Title)  Lorem Ipsum.</p>
-                                    <p class="card-text">Starts: Date: Vanntar</p>
-                                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                                </div>
-                            </div>
-                        </div>
+
+                        <table class="table">
+                            <thead class="text-light" style="background:black; ">
+                                <tr>
+                                    <th scope="col"> @Html.DisplayNameFor(model => model.Grant[0].Title) </th>
+                                    <th scope="col"> @Html.DisplayNameFor(model => model.Grant[0].Image) </th>
+                                    <th scope="col">  </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Grant)
+                                {
+                                    <tr>
+                                        <td> @Html.DisplayFor(modelItem => item.Title) </td>
+                                        <td> @Html.DisplayFor(modelItem => item.Image) </td>
+                                        <td>
+                                            <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                                            <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     }
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>

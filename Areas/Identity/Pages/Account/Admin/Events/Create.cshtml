@@ -5,9 +5,8 @@
     ViewData["Title"] = "Create";
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
-<div class="container" id="containerLayout">
-
-    <h2>Manage your Admin account</h2>
+<div class="card" id="containerLayout" style="padding: 20px">
+    <h2 class="heading">Manage your Admin account</h2>
     <div>
         <hr />
         <div class="row">
@@ -24,56 +23,50 @@
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
                 </div>
             </div>
-            <div class="col-md-9">
-                <div class="cont">
-                    <div class="container">
+            <div class="col-md-9 center">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
                         <div>
-                            <h1>Create Event</h1>
+                            <h2 class="">Create Event</h2>
                         </div>
+                        <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Event.Title" class="control-label"></label>
+                                <input asp-for="Event.Title" class="form-control" />
+                                <span asp-validation-for="Event.Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Event.text" class="control-label"></label>
+                                <input type="text" asp-for="Event.text" class="form-control" />
+                                <span asp-validation-for="Event.text" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Event.eventLink" class="control-label"></label>
+                                <input asp-for="Event.eventLink" class="form-control" />
+                                <span asp-validation-for="Event.eventLink" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Event.StartDate" class="control-label"></label>
+                                <input type="date" asp-for="Event.StartDate" class="form-control" />
+                                <span asp-validation-for="Event.StartDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Event.date" class="control-label"></label>
+                                <input type="date" asp-for="Event.date" class="form-control" />
+                                <span asp-validation-for="Event.date" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="files" multiple />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
                     </div>
                 </div>
 
-                <div class="cart container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-group">
-                                    <label asp-for="Event.Title" class="control-label"></label>
-                                    <input asp-for="Event.Title" class="form-control" />
-                                    <span asp-validation-for="Event.Title" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Event.text" class="control-label"></label>
-                                    <input type="text" asp-for="Event.text" class="form-control" />
-                                    <span asp-validation-for="Event.text" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Event.eventLink" class="control-label"></label>
-                                    <input asp-for="Event.eventLink" class="form-control" />
-                                    <span asp-validation-for="Event.eventLink" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Event.StartDate" class="control-label"></label>
-                                    <input type="date" asp-for="Event.StartDate" class="form-control" />
-                                    <span asp-validation-for="Event.StartDate" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Event.date" class="control-label"></label>
-                                    <input type="date" asp-for="Event.date" class="form-control" />
-                                    <span asp-validation-for="Event.date" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <input type="file" name="files" multiple />
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Create" class="btn btn-primary" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
+            </div>
 
 
                 <div>
@@ -82,4 +75,3 @@
             </div>
         </div>
     </div>
-</div>

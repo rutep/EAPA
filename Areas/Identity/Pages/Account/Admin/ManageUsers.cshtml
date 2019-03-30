@@ -5,9 +5,10 @@
     // Til að nota eigið _Layout þarf að gefa því absolute path í Index.
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
-<div class="container" id="containerLayout">
+<div class="card" id="containerLayout" style="padding: 20px">
 
-    <h2>Manage your Admin account</h2>
+
+    <h2 class="heading">Manage your Admin account</h2>
     <div>
         <hr />
         <div class="row">
@@ -19,47 +20,48 @@
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
+                    <!--<a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>-->
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
                     <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
                 </div>
             </div>
             <div class="col-md-9">
-
-                <h2>Manage users</h2>
-                <table>
-                    <tr>
-                        <th>First name</th>
-                        <th>Middle name</th>
-                        <th>Last name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Phone number</th>
-                        <th>email</th>
-                        <th>email Confirmed</th>
-                        <th>registered</th>
-                        <th>affiliation</th>
-                        <th>Payment confirmed</th>
-                    </tr>
-                    @{
-                        foreach (var item in Model.user)
-                        {
-                            <tr>
-                                <td>@item.firstName</td>
-                                <td>@item.middleName</td>
-                                <td>@item.lastName</td>
-                                <td>@item.address</td>
-                                <td>@item.city</td>
-                                <td>@item.PhoneNumber</td>
-                                <td>@item.Email</td>
-                                <td>@item.EmailConfirmed</td>
-                                <td>vantar</td>
-                                <td>@item.affiliation</td>
-                                <td>vantar</td>
-                            </tr>
+                <div class="row justify-content-center">
+                    <h2 class="heading">Manage users</h2>
+                    <table class="">
+                        <tr>
+                            <th>First name</th>
+                            <th>Middle name</th>
+                            <th>Last name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Phone number</th>
+                            <th>email</th>
+                            <th>email Confirmed</th>
+                            <th>registered</th>
+                            <th>affiliation</th>
+                            <th>Payment confirmed</th>
+                        </tr>
+                        @{
+                            foreach (var item in Model.user)
+                            {
+                                <tr>
+                                    <td>@item.firstName</td>
+                                    <td>@item.middleName</td>
+                                    <td>@item.lastName</td>
+                                    <td>@item.address</td>
+                                    <td>@item.city</td>
+                                    <td>@item.PhoneNumber</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.EmailConfirmed</td>
+                                    <td>vantar</td>
+                                    <td>@item.affiliation</td>
+                                    <td>vantar</td>
+                                </tr>
+                            }
                         }
-                    }
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
