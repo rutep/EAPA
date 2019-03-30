@@ -18,18 +18,19 @@
 
                     <div>
                         <h1 class="text-center" style="margin-top:20px; margin-bottom: 20px;">Edit Event</h1>
+                        @if(Model.Event.Image == "")
+                        {
+
+                        } else
+                        {
                         <img src="~/images/events/@Model.Event.Image" style="padding:20px">
+                        }
                     </div>
-
-
-
-
-                    
                 </div>
                         
                 <div style="padding: 20px;">
-                    <h5 class="">@Model.Event.Title</h5>
-                    <p class="card-text">@Model.Event.Title</p>
+                    <h5 class="">Title: @Model.Event.Title</h5>
+                    <p class="card-text">Text: @Model.Event.Title</p>
                     <form method="post" asp-controller="UploadFiles" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="Event.Id" />
