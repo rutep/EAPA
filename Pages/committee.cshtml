@@ -30,12 +30,12 @@
         </div>
 
 
-        <div class="cart">
+        <div class="">
             @foreach (var item in Model.BoardMember)
             {
                 if (item.Image == "")
                 {
-                    <div class="card mb-3">
+                    <div class="card" style="padding:20px; margin:20px;">
                         <div class="card-body">
                             <h5 class="card-title pads">@Html.DisplayFor(modelItem => item.Name)</h5>
                             <p class="card-text pads">@Html.DisplayFor(modelItem => item.BoardRole)</p>
@@ -45,7 +45,7 @@
                 }
                 else
                 {
-                    <div class="card mb-3">
+                    <div class="card" style="padding:20px; margin:20px; ">
 
                         <div class="card-body">
                             <h5 class="card-title pads">@Html.DisplayFor(modelItem => item.Name)</h5>
