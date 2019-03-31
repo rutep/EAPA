@@ -6,35 +6,21 @@
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
 
-<div class="cont">
-    <div class="container">
-        <div>
-            <h1>Create Event</h1>
-        </div>
-    <p>
-        <a asp-page="Create">Create New Event</a>
-    </p>
-    </div>
-</div>
+<div class="card" id="containerLayout" style="padding: 20px">
+    <h2 class="heading">Manage your Admin account</h2>
+    <div>
+        <hr />
+        <div class="row">
+            <partial name="ANav" />
+            <div class="col-md-9 center">
+                <div class="row justify-content-center">
 
 
-<div class="cart container">
+                    <h2 class="heading">Here will be election management</h2>
 
-    @foreach (var item in Model.Vote)
-    {
 
-        <div class="card-size">
-            <div class="card" style="width: 18rem;">
-                <img class="images card-image-top" src="~/images/events/@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Title: @Html.DisplayFor(modelItem => item.Title)</h5>
-                    <p class="card-text">Text: @Html.DisplayFor(modelItem => item.Title)  Lorem Ipsum.</p>
-                    <p class="card-text">Ending date: @Html.DisplayFor(modelItem => item.date)</p>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </div>
             </div>
         </div>
-    }
-</div>
+    </div>
+    </div>
