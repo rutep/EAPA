@@ -35,27 +35,27 @@ section {
         padding: 3px 0;
     }
 
-        #footer ul.social li a i {
-            margin-right: 5px;
-            font-size: 25px;
-            -webkit-transition: .5s all ease;
-            -moz-transition: .5s all ease;
-            transition: .5s all ease;
-        }
+    #footer ul.social li a i {
+        margin-right: 5px;
+        font-size: 25px;
+        -webkit-transition: .5s all ease;
+        -moz-transition: .5s all ease;
+        transition: .5s all ease;
+    }
 
-        #footer ul.social li:hover a i {
-            font-size: 30px;
-            margin-top: -10px;
-        }
+    #footer ul.social li:hover a i {
+        font-size: 30px;
+        margin-top: -10px;
+    }
 
-        #footer ul.social li a,
-        #footer ul.quick-links li a {
-            color: #ffffff;
-        }
+    #footer ul.social li a,
+    #footer ul.quick-links li a {
+        color: #ffffff;
+    }
 
-            #footer ul.social li a:hover {
-                color: #eeeeee;
-            }
+    #footer ul.social li a:hover {
+        color: #eeeeee;
+    }
 
     #footer ul.quick-links li {
         padding: 3px 0;

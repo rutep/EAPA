@@ -44,7 +44,7 @@ namespace webApi
 
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
+                options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<MyUser>()
                 .AddRoles<IdentityRole>()

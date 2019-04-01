@@ -18,9 +18,4 @@ public class MyUser : IdentityUser
     public string volunteer { get; set; }
     public string conference { get; set; }
     public string field_of_interest { get; set; }
-
-    // public DateTime StartDate { get; set; }
-    // public DateTime EndDate { get; set; }
-
-    //custom properties
 }
