@@ -5,55 +5,41 @@
     ViewData["Title"] = "Details";
 }
 
-<div class="container" id="containerLayout">
-
-    <h2>Manage your Admin account</h2>
+<div class="card container" id="containerLayout" style="padding: 20px">
+    <h2 class="heading">Manage your Admin account</h2>
     <div>
         <hr />
         <div class="row">
-            <div class="list-group">
-                <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Index">Profile</a>
-                <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
-                <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
-                <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
-                <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
-                <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
-                <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
-                <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
-                <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
-            </div>
+            <partial name="ANav" />
             <div class="col-md-9">
-                <div class="cont">
-                    <div>
-                        <h2>Details about Boardmember</h2>
-                    </div>
+                <div class="row justify-content-center">
 
-                    <dl class="dl-horizontal">
-                        <dt>
-                            @Html.DisplayNameFor(model => model.BoardMember.Name)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.BoardMember.Name)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.BoardMember.BoardRole)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.BoardMember.BoardRole)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.BoardMember.Image)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.BoardMember.Image)
-                        </dd>
-                    </dl>
+                    <div>
+                        <h1 class="text-center" style="margin-top:20px; margin-bottom: 20px;">Details</h1>
+                        @if (Model.BoardMember.Image == "")
+                        {
+
+                        }
+                        else
+                        {
+                            <img src="~/images/boardmembers/@Model.BoardMember.Image" style="padding:20px">
+                        }
+                    </div>
                 </div>
-                <div>
-                    <a class="btn btn-primary"asp-page="./Edit" asp-route-id="@Model.BoardMember.Id">Edit</a> |
-                    <a class="btn btn-secondary"asp-page="./Index">Back to List</a>
+                <div style="padding: 20px;">
+                    <div class="card-body">
+                        <p>Name</p>
+                        <h5 class="card-title">@Model.BoardMember.Name</h5>
+                        <p>Board Role</p>
+                        <p class="card-text">@Model.BoardMember.BoardRole</p>
+                        <p>Text</p>
+                        <p class="card-text">@Model.BoardMember.text</p>
+                        <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@Model.BoardMember.Id">Edit</a>
+                        <a class="btn btn-primary" asp-page="./Delete" asp-route-id="@Model.BoardMember.Id">Delete</a>
+                        <a class="btn btn-secondary" asp-page="./Index">Back to List</a>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

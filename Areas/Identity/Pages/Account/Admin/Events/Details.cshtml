@@ -5,53 +5,41 @@
     ViewData["Title"] = "Details";
     Layout = "~/Areas/Identity/Pages/Account/Admin/_Layout.cshtml";
 }
-<div class="container" id="containerLayout">
-
-    <h2>Manage your Admin account</h2>
+<div class="card container" id="containerLayout" style="padding: 20px">
+    <h2 class="heading">Manage your Admin account</h2>
     <div>
-        <h4>Change your Admin settings</h4>
         <hr />
         <div class="row">
-            <div class="col-md-3">
-                <div class="col-md-3">
-                    <div class="list-group">
-                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Index">Profile</a>
-                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
-                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
-                        <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/Events/Index">Edit Events</a>
-                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
-                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
-                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
-                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
-                        <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/FAQS">FAQS</a>
-                    </div>
-                </div>
+            <partial name="ANav" />
             <div class="col-md-9">
-                <div class="cont">
-                    <div class="container">
-                        <div>
-                            <h1>Details</h1>
-                        </div>
+                <div class="row justify-content-center">
+
+                    <div>
+                        <h1 class="text-center" style="margin-top:20px; margin-bottom: 20px;">Details</h1>
+                        @if (Model.Event.Image == "")
+                        {
+
+                        }
+                        else
+                        {
+                            <img src="~/images/events/@Model.Event.Image" style="padding:20px">
+                        }
                     </div>
                 </div>
-
-
-
-                <div class="cart container">
-                    <div class="card mb-3" style="width: 36rem;">
-                        <img class="card-img-top" src="~/images/events/@Model.Event.Image" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">@Model.Event.Title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <a asp-page="./Edit" asp-route-id="@Model.Event.Id">Edit</a> |
-                            <a asp-page="./Index">Back to List</a>
-                        </div>
+                <div style="padding: 20px;">
+                    <div class="card-body">
+                        <p>Title</p>
+                        <h5 class="card-title">@Model.Event.Title</h5>
+                        <p>Text</p>
+                        <p class="card-text">@Model.Event.text</p>
+                        <p>Link</p>
+                        <a href="@Model.Event.eventLink">@Model.Event.eventLink</a> 
+                        <br />
+                        <br />
+                        <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@Model.Event.Id">Edit</a>
+                        <a class="btn btn-primary" asp-page="./Delete" asp-route-id="@Model.Event.Id">Delete</a>
+                        <a class="btn btn-secondary" asp-page="./Index">Back to List</a>
                     </div>
-                </div>
-
-                <div>
-                    <a class="btn btn-secondary" asp-page="./Index">Back to List</a>
                 </div>
             </div>
         </div>

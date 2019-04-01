@@ -4,18 +4,28 @@
 @{
     ViewData["Title"] = "FAQ";
 }
-<body>
-    <div class="container">
-        <h1>Answers to frequently asked questions</h1>
-        <hr/>
+
+
+<div class="container">
+   
+    <h1 class="heading"> Frequently Asked Questions</h1>
+        
         @foreach (var item in Model.FAQS)
         {
-            <h3>@item.questions</h3>
-            <p>@item.answers</p>
+            
+                <div class="card mb-3" style="width: 100%">
+                    <div class="card-body">
+                        <p>Question</p>
+                        <h3>@item.questions</h3>
+                        <p>Answer</p>
+                        <p>@item.answers</p>
+                    </div>
+                </div>
+            
         }
-    </div>
+    
+</div>
 
-</body>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

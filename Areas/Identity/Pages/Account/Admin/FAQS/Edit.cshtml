@@ -4,54 +4,40 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<div class="container" id="containerLayout">
-
-    <h2>Manage your Admin account</h2>
+<div class="card container" id="containerLayout" style="padding: 20px">
+    <h2 class="heading">Manage your Admin account</h2>
     <div>
         <hr />
         <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Index">Profile</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ChangePassword">Password</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/ManageUsers">Manage Users</a>
-                    <a class="list-group-item list-group-item-action " href="/Identity/Account/Admin/Events/Index">Edit Events</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/News/Index">Edit News</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Boardmember/Index">Edit Boardmembers</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/Votes/Index">Elections</a>
-                    <a class="list-group-item list-group-item-action" href="/Identity/Account/Admin/admin_edit_pdf">Edit pdf files</a>
-                    <a class="list-group-item list-group-item-action active" href="/Identity/Account/Admin/FAQS">FAQS</a>
-                </div>
-            </div>
+            <partial name="ANav" />
             <div class="col-md-9">
-                <div class="cont">
+                <div class="row justify-content-center">
+
                     <div>
-                        <h2>Create FAQ</h2>
+                        <h1 class="text-center" style="margin-top:20px; margin-bottom: 20px;">Edit FAQ</h1>
                     </div>
                 </div>
-                <div class="row">
-                    <form method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="FAQ.Id" />
-                        <div class="form-group">
-                            <label asp-for="FAQ.questions" class="control-label"></label>
-                            <input asp-for="FAQ.questions" class="form-control" />
-                            <span asp-validation-for="FAQ.questions" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="FAQ.answers" class="control-label"></label>
-                            <input asp-for="FAQ.answers" class="form-control" />
-                            <span asp-validation-for="FAQ.answers" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Save" class="btn btn-primary" />
-                        </div>
-                    </form>
-                </div>
-                <div>
-                    <a asp-page="./Index">Back to List</a>
-                </div>
+                <div style="padding: 20px;">
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="FAQ.Id" />
+                            <div class="form-group">
+                                <label class="control-label">Questions</label>
+                                <input asp-for="FAQ.questions" class="form-control" />
+                                <span asp-validation-for="FAQ.questions" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Text</label>
+                                <textarea textarea asp-for="FAQ.answers" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                            <a class="btn btn-secondary" asp-page="./Index">Back to List</a>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
         </div>
