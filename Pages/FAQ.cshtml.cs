@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FAQ.Data;
 using webApi.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace webApi.Pages
 {
+    [AllowAnonymous]
     public class FAQModel : PageModel
     {
         private readonly webApi.Data.ApplicationDbContext _context;
