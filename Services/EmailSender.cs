@@ -6,6 +6,28 @@ using System.Threading.Tasks;
 
 namespace WebPWrecover.Services
 {
+    internal class EmailSender
+    {
+        public void SendEmailAsync(string email, string subject, string message) => Execute(subject, message, email).Wait();
+
+        static async Task Execute(string subject, string message, string email)
+        {
+            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            var client = new SendGridClient(apiKey);
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress("Joe@contoso.com", "Europe Association beahaviroal Analysis "),
+                Subject = subject,
+                PlainTextContent = message,
+                HtmlContent = message
+            };
+            msg.AddTo(new EmailAddress(email));
+            msg.SetClickTracking(false, false);
+            var response = await client.SendEmailAsync(msg);
+            
+        }
+    }
+    /*
     public class EmailSender : IEmailSender
     {
         public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
@@ -39,4 +61,6 @@ namespace WebPWrecover.Services
             return client.SendEmailAsync(msg);
         }
     }
+       
+     */
 }
