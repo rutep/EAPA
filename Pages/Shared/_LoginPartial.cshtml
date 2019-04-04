@@ -14,13 +14,13 @@
                 if (await UserManager.IsInRoleAsync(userinn, "Admin"))
                 {
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Admin/Index" title="Manage">Admin @UserManager.GetUserName(User)!</a>
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Admin/Index" title="Manage">Admin @UserManager.GetUserName(User)</a>
                     </li>
                 }
                 else
                 {
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)</a>
                     </li>
                 }
             }
