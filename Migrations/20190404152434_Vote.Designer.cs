@@ -10,8 +10,8 @@ using webApi.Data;
 namespace webApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190403135040_BoardMembers")]
-    partial class BoardMembers
+    [Migration("20190404152434_Vote")]
+    partial class Vote
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
