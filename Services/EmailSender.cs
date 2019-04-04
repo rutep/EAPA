@@ -12,11 +12,11 @@ namespace WebPWrecover.Services
 
         static async Task Execute(string subject, string message, string email)
         {
-            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            var apiKey = "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";
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("Joe@contoso.com", "Europe Association beahaviroal Analysis "),
+                From = new EmailAddress("Joe@contoso.com", "European Association for Behaviour Analysis "),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
@@ -63,4 +63,5 @@ namespace WebPWrecover.Services
     }
        
      */
+     
 }
