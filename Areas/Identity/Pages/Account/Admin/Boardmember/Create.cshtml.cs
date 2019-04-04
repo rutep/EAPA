@@ -30,7 +30,7 @@ namespace webApi.Pages.Boardmember
         }
 
         [BindProperty]
-        public BoardMember BoardMember { get; set; }
+        public BoardMemberEntity.Data.BoardMember BoardMember { get; set; }
         [HttpPost("UploadFiles")]
         public async Task<IActionResult> OnPostAsync()
         {
@@ -40,7 +40,7 @@ namespace webApi.Pages.Boardmember
                 Random random = new System.Random();
                 int id = random.Next(0, 100000);
                 IFormFile file = HttpContext.Request.Form.Files[0];
-                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", id  + file.FileName);
+                var fileName = Path.Combine(he.WebRootPath + "/images/boardmembers", id  + file.FileName);
                 BoardMember.Image = id + file.FileName;
 
                 using (var stream = new FileStream(fileName, FileMode.Create))

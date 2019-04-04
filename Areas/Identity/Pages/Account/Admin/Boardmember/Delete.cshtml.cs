@@ -69,7 +69,7 @@ namespace webApi.Pages.Boardmember
 
             if (BoardMember.Image != "")
             {
-                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", BoardMember.Image);
+                var fileName = Path.Combine(he.WebRootPath + "/images/boardmembers", BoardMember.Image);
                 System.IO.File.Delete(fileName);
             }
 

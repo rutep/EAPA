@@ -64,7 +64,7 @@ namespace webApi.Pages.Boardmember
                 Random random = new System.Random();
                 int id = random.Next(0, 100000);
                 IFormFile file = HttpContext.Request.Form.Files[0];
-                var fileName = Path.Combine(he.WebRootPath + "\\images\\events", id + file.FileName);
+                var fileName = Path.Combine(he.WebRootPath + "/images/boardmembers", id + file.FileName);
                 BoardMember.Image = id + file.FileName;
                 using (var stream = new FileStream(fileName, FileMode.Create))
                 {
@@ -74,7 +74,7 @@ namespace webApi.Pages.Boardmember
 
                 if (original_data.Image != "")
                 {
-                    var fileNam = Path.Combine(he.WebRootPath + "\\images\\events", original_data.Image);
+                    var fileNam = Path.Combine(he.WebRootPath + "/images/boardmembers", original_data.Image);
                     System.IO.File.Delete(fileNam);
                 }
             }
