@@ -19,12 +19,14 @@
                                 <p>This is the upload for the <b>EABA by-laws</b>, once uploaded this will replace the previous file. <br> <b>This process is irreversible</b></p>
                                 <form method="post" asp-controller="UploadByLaws" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <input type="file" name="files-law" multiple />
+                                        <label class="control-label">Chosse PDF file</label>
+                                        <input class="form-control-file" type="file" name="files" multiple />
                                     </div>
 
                                     <p>This is the upload for the <b>Organization Information</b>, once uploaded this will replace the previous file. <br> <b>This process is irreversible</b></p>
                                     <div class="form-group">
-                                        <input type="file" name="files-info" multiple />
+                                        <label class="control-label">Chosse PDF file</label>
+                                        <input class="form-control-file" type="file" name="files" multiple />
                                     </div>
                                     <button type="submit" class="btn btn-primary">Upload Files</button>
                                 </form>
