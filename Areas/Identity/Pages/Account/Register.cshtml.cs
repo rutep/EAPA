@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
-
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace webApi.Areas.Identity.Pages.Account
 {
@@ -203,10 +204,18 @@ namespace webApi.Areas.Identity.Pages.Account
                             pageHandler: null,
                             values: new { userId = user.Id, code = code },
                             protocol: Request.Scheme);
-                        await _emailSender.SendEmailAsync(Input.Email, "Please confirm your email address",
-                            $"Velcome " + Input.Email +
-                            $"<br/>" +
-                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        var apiKey = "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";
+                        var client = new SendGridClient(apiKey);
+                        var msg = new SendGridMessage()
+                        {
+                            From = new EmailAddress("Joe@contoso.com", "European Association for Behaviour Analysis "),
+                            Subject = "Please Confirm your email addresss",
+                            PlainTextContent = $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.",
+                            HtmlContent = $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
+                        };
+                        msg.AddTo(new EmailAddress(Input.Email));
+                        msg.SetClickTracking(false, false);
+                        var response = await client.SendEmailAsync(msg);
 
 
                         await _signInManager.SignInAsync(user, isPersistent: false);

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace webApi.Areas.Identity.Pages.Account.Manage
 {
@@ -50,6 +52,7 @@ namespace webApi.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            StatusMessage = "";
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -135,10 +138,25 @@ namespace webApi.Areas.Identity.Pages.Account.Manage
                 pageHandler: null,
                 values: new { userId = userId, code = code },
                 protocol: Request.Scheme);
-            await _emailSender.SendEmailAsync(
-                email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+            
+
+            var apiKey = "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";
+            var client = new SendGridClient(apiKey);
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress("Joe@contoso.com", "European Association for Behaviour Analysis "),
+                Subject = "Confirm your email",
+                PlainTextContent = $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.",
+                HtmlContent = $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
+            };
+            msg.AddTo(new EmailAddress(Input.Email));
+            msg.SetClickTracking(false, false);
+            var response = await client.SendEmailAsync(msg);
+
+
+
+
+
 
             StatusMessage = "Verification email sent. Please check your email.";
             return RedirectToPage();
