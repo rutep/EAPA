@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace webApi.Migrations
 {
-    public partial class BoardMembers : Migration
+    public partial class Vote : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
